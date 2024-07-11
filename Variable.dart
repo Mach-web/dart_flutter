@@ -1,3 +1,6 @@
+/*
+https://dart.dev/language/variables
+*/
 late String description;
 void main(){
   var name = "Bob";
@@ -31,4 +34,12 @@ void main(){
   // This surprisingly works
   foo = [1, 3];
   print("Constants: $myConstant, $myConstNo, $baz");
+
+  // Constants that use type checks
+  var list = [1, 2, 5, 6, 3];
+  const Object obj = 23;
+  const intList = [obj as int];//Type cast
+  const map = {if(obj is int) obj:"int"};
+  const set = {if(intList is List<int>) ...intList};
+  print("Constant Object: $obj, Type cast: $intList , Using is and collection if: $map ...and a spread: $set");
 }
