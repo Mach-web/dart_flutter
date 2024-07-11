@@ -7,4 +7,12 @@ void main(){
   Object names = "Mark";
   String name1 = "Mach";
   print("var: $name Object: $names String: name1");
+
+  // Null safety
+  String? name2;
+  int? number;
+  print("Nullable String: $name2 Nullable integer: $number");
+  String name3;
+  // The code below raises an error
+  // print("Non nullable variables: $name3");
 }
