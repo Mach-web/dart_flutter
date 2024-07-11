@@ -1,3 +1,4 @@
+late String description;
 void main(){
   var name = "Bob";
  /*The type of the name variable is inferred to be String,
@@ -15,4 +16,6 @@ void main(){
   String name3;
   // The code below raises an error
   // print("Non nullable variables: $name3");
+  description = "This is a late variable";
+  print("Late variable: $description");
 }
