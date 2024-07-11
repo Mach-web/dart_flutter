@@ -18,4 +18,17 @@ void main(){
   // print("Non nullable variables: $name3");
   description = "This is a late variable";
   print("Late variable: $description");
+
+  // Final and constant variables
+  final myConstant = "MachTechie";
+  const int myConstNo = 10000 * 3;
+  // myConstant = "Mach";
+  var foo = const [];
+  const bar = const [];
+  const baz = []; // Equivalent to `const []`
+  // bar = [42, 33];
+  // baz = [1, 3, 4];
+  // This surprisingly works
+  foo = [1, 3];
+  print("Constants: $myConstant, $myConstNo, $baz");
 }
