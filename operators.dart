@@ -6,4 +6,22 @@ void main(){
     b = ++a;
     c = a_copy++;
     print("a = $a \nb == ++a = $b\nc == a++ = $c");
+    // Assign value to a
+    a = 53;
+    // Assign value to b if b is null; otherwise, b stays the same
+    b ??= 53;
+    print("a = $a, b ??= $b");
+
+    final value = 0x22;
+    final bitmask = 0x0f;
+    assert((value & bitmask) == 0x02);
+
+    bool isPublic = false;
+    var visibility = 1 > 0 ? 'public' : 'private';
+    print("Visibility(Short form if): $visibility");
+
+    var Name;
+    String PlayerName(String? name)  => name ?? 'Guest';
+    var playerName = PlayerName(Name);
+    print("if....null: $playerName");
 }
