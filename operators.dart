@@ -24,4 +24,23 @@ void main(){
     String PlayerName(String? name)  => name ?? 'Guest';
     var playerName = PlayerName(Name);
     print("if....null: $playerName");
+
+    var sb = StringBuffer();
+    sb.write('foo')
+    ..write('bar'); // Error: method 'write' isn't defined for 'void'.
+
+    /*
+    querySelector('#confirm') // Get an object.
+  ?..text = 'Confirm' // Use its members.
+  ..classes.add('important')
+  ..onClick.listen((e) => window.alert('Confirmed!'))
+  ..scrollIntoView();
+  */
+  /*
+  var button = querySelector('#confirm');
+button?.text = 'Confirm';
+button?.classes.add('important');
+button?.onClick.listen((e) => window.alert('Confirmed!'));
+button?.scrollIntoView();
+*/
 }
