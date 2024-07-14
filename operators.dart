@@ -5,5 +5,5 @@ void main(){
     a_copy = a;
     b = ++a;
     c = a_copy++;
-    print("a = $a \nb == ++a = $b\n c == a++ = $c");
+    print("a = $a \nb == ++a = $b\nc == a++ = $c");
 }
