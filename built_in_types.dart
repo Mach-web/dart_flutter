@@ -23,4 +23,15 @@ void main(){
     assert((3 << 1) == 6); // 0011 << 1 == 0110
     assert((3 | 4) == 7); // 0011 | 0100 == 0111
     print("Bitwise operations(3|4): ${3|4}  (7&3): ${7&3}");
+    const msPerSecond = 1000;
+    const secondsUntilRetry = 5;
+    const msUntilRetry = secondsUntilRetry * msPerSecond;
+    print(msUntilRetry);
+    var s = "String Interpolation";
+    print("${s.toUpperCase()} is very handy. ${s.toLowerCase()} is very handy.");
+    s = "String "
+    "concatenation";
+    print(s);
+    s = "String " + "concatenation";
+    print(s);
 }
