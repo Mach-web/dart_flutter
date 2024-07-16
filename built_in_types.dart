@@ -34,4 +34,8 @@ void main(){
     print(s);
     s = "String " + "concatenation";
     print(s);
+    s = """
+    This spans across 
+    multiple lines""";
+    print(s);
 }
