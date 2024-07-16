@@ -38,4 +38,6 @@ void main(){
 This spans across 
 multiple lines""";
     print(s);
+    s = r"In a raw string even \n does not get special treatment.";
+    print(s);
 }
