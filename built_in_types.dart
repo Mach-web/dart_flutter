@@ -54,4 +54,9 @@ multiple lines""";
     const validConstString = '$aConstNum $aConstBool $aConstString';
     // const invalidConstString = '$aNum $aBool $aString $aConstList';
     print(validConstString);
+
+    var fullName = "";
+    var unicorn = null;
+    var error = 0/0;
+    print("Check if empty: ${fullName.isEmpty} Is null? ${unicorn == null} is Nan? ${error.isNaN}");
 }
