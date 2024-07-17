@@ -5,11 +5,11 @@
 
 void main(){
   var record = ('first', a:1, b:true, 'last');
-  print("Example record: $record");
+  print("Example record: $record \t ${record.$1} \t ${record.a} \t ${record.b} \t ${record.$2}");
   (String, int, double) records;
   records = ('A String', 23, 3.174);
   print("Record initialization: $records");
   ({int x, int y, double z}) recordX = (x: 1, y: 2, z: 1.345);
   (int x, String y) recordY = (1, "Hello World");
-  print("recordX: $recordX, recordY: $recordY");
+  print("recordX: $recordX \nrecordY: $recordY");
 }
