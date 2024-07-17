@@ -12,4 +12,12 @@ void main(){
   ({int x, int y, double z}) recordX = (x: 1, y: 2, z: 1.345);
   (int x, String y) recordY = (1, "Hello World");
   print("recordX: $recordX \nrecordY: $recordY");
+
+  (num, Object) recordZ = (2, "hello");
+  var first = recordZ.$1; // Static type `num`, runtime type `int`.
+  var second = recordZ.$2; // Static type `Object`, runtime type `String`
+  
+  (int x, int y, String z) recordA = (2, 3, "Hello");
+  (int a, int b, String C) recordB = (2, 3, "Hello");
+  print("(int x, int y, String z) == (int a, int b, String C) = (2, 3, 'Hello') is ${recordA == recordB}"); 
 }
