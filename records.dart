@@ -38,4 +38,8 @@ void main(){
   var(name, age, color) = userInfo(json);
   print("Working with json: $json $name, $age, $color");
 
+  (int first, int second) record_xy = (12, 13);
+  var result = swap(record_xy);
+  print("Intial value: $record_xy, After swap: $result");
+
 }
