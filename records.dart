@@ -9,4 +9,7 @@ void main(){
   (String, int, double) records;
   records = ('A String', 23, 3.174);
   print("Record initialization: $records");
+  ({int x, int y, double z}) recordX = (x: 1, y: 2, z: 1.345);
+  (int x, String y) recordY = (1, "Hello World");
+  print("recordX: $recordX, recordY: $recordY");
 }
