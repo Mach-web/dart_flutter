@@ -22,5 +22,5 @@ void main(){
     gifts['Mashujaa'] = 'necklace';
     print("A map: $nobleGases, Element 10: ${nobleGases[10]}");
     gifts['Xmas'] = 'bangle';
-    print("Create map using map constructor: $gifts");
+    print("Create map using map constructor: $gifts Length: ${gifts.length}");
 }
