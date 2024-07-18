@@ -31,6 +31,9 @@ void main(){
 
     // control flow
     var life = false;
-    var control_list = ['mercury', 'venus', if (life) 'earth', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune'];
+    var distance = 'closest';
+    var no_of_planets = 9;
+    var control_list = ['mercury', 'venus', if (life) 'earth', 
+    'mars', 'jupiter', 'saturn', 'uranus', 'neptune', if(no_of_planets case 9) "pluto"];
     print("Use control structure in list: $control_list");
 }
