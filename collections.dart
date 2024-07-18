@@ -25,7 +25,7 @@ void main(){
     print("Create map using map constructor: $gifts Length: ${gifts.length}");
 
     // spread operators
-    var list1 = [6, 7, 8, null];
+    var list1 = [6, 7, 8, 9,];
     var set1 = {1, 2, 3};
     print("Spread operators: ${[0, ...set1, 4, 5, ...list1]}");
 
@@ -36,4 +36,7 @@ void main(){
     var control_list = ['mercury', 'venus', if (life) 'earth', 
     'mars', 'jupiter', 'saturn', 'uranus', 'neptune', if(no_of_planets case 9) "pluto"];
     print("Use control structure in list: $control_list");
+
+    // collection for
+    print("Loop a list: ${[0, for(var i in set1) i * i, 16, 25, for(var i in list1) i * i]}");
 }
