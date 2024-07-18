@@ -23,4 +23,8 @@ void main(){
     print("A map: $nobleGases, Element 10: ${nobleGases[10]}");
     gifts['Xmas'] = 'bangle';
     print("Create map using map constructor: $gifts Length: ${gifts.length}");
+
+    // spread operators
+    var list1 = {1, 2, 3};
+    print("Spread operators: ${[0, ...list1, 4, 5]}");
 }
