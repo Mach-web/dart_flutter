@@ -25,6 +25,12 @@ void main(){
     print("Create map using map constructor: $gifts Length: ${gifts.length}");
 
     // spread operators
-    var list1 = {1, 2, 3};
-    print("Spread operators: ${[0, ...list1, 4, 5]}");
+    var list1 = [6, 7, 8, null];
+    var set1 = {1, 2, 3};
+    print("Spread operators: ${[0, ...set1, 4, 5, ...list1]}");
+
+    // control flow
+    var life = false;
+    var control_list = ['mercury', 'venus', if (life) 'earth', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune'];
+    print("Use control structure in list: $control_list");
 }
