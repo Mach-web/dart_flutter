@@ -16,5 +16,7 @@ void main(){
     var views = Map<int, String>();
     views[1] = 'first';
     views[2] = 'second';
-    print(views);
+    print("Create an empty dictionary then add values $views");
+
+    print("names is List<String>: ${names is List<String>}");
 }
