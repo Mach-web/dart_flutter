@@ -18,5 +18,5 @@ void main(){
     views[2] = 'second';
     print("Create an empty dictionary then add values $views");
 
-    print("names is List<String>: ${names is List<String>}");
+    print("names is List<String>: ${names is List<String>} uniqueNames is Set<String>: ${uniqueNames is Set<String>}");
 }
