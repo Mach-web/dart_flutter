@@ -4,8 +4,9 @@ void main() {
   runApp(
     const MaterialApp(
       home: Scaffold(
+        backgroundColor: Color.fromARGB(255, 58, 22, 120),
         body: Center(
-          child: Text("This is my first app"),
+          child: Text("This is my first app?!!!!"),
         ),
       ),
     ),
