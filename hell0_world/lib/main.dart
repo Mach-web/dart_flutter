@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 
-void main(){
-  runApp(MaterialApp(home: Text("This is my first app")));
+void main() {
+  runApp(
+    const MaterialApp(
+      home: Scaffold(
+        body: Center(
+          child: Text("This is my first app"),
+        ),
+      ),
+    ),
+  );
 }
 /*
 import 'package:flutter/material.dart';
