@@ -6,13 +6,16 @@ void main() {
       home: Scaffold(
         // backgroundColor: Color.fromARGB(255, 58, 22, 120),
         body: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
-              colors: Colors.accents
+              colors: [
+                Color.fromARGB(255, 189, 168, 226),
+                Color.fromARGB(255, 26, 2, 98),
+              ],
               ),
           ),
           child: const Center(
-            child: Text("This is my first app?!!!!"),
+          child: Text("This is my first app?!!!!"),
           ),
         ),
       ),
