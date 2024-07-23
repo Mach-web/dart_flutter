@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 
+void main(){
+  runApp(MaterialApp(home: Text("This is my first app")));
+}
+/*
+import 'package:flutter/material.dart';
+
 void main() {
   runApp(const MainApp());
 }
@@ -18,3 +24,4 @@ class MainApp extends StatelessWidget {
     );
   }
 }
+*/
