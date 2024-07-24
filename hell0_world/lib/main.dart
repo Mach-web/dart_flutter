@@ -7,10 +7,10 @@ void main() {
         // backgroundColor: Color.fromARGB(255, 58, 22, 120),
         body: Container(
           decoration: const BoxDecoration(
-            gradient: LinearGradient(
+            gradient: RadialGradient(
               colors: [
-                Color.fromARGB(255, 189, 168, 226),
-                Color.fromARGB(255, 26, 2, 98),
+                Color.fromARGB(255, 152, 115, 216),
+                Color.fromARGB(255, 85, 41, 215),
               ],
               ),
           ),
