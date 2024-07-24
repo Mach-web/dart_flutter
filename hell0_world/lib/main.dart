@@ -18,9 +18,10 @@ void main() {
           ),
           child: const Center(
           child: Text("This is my first app?!!!!",
-          textScaler: TextScaler.linear(3),
+          // textScaler: TextScaler.linear(3),
           style: TextStyle(color: Colors.white,
-          fontSize: 28,
+          fontSize: 35,
+          backgroundColor: Colors.teal,
           ),
           ),
           ),
