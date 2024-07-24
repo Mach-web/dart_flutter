@@ -7,12 +7,14 @@ void main() {
         // backgroundColor: Color.fromARGB(255, 58, 22, 120),
         body: Container(
           decoration: const BoxDecoration(
-            gradient: RadialGradient(
+            gradient: LinearGradient(
               colors: [
                 Color.fromARGB(255, 152, 115, 216),
                 Color.fromARGB(255, 85, 41, 215),
               ],
-              ),
+              // begin: Alignment.topLeft,
+              // end: Alignment.bottomRight,
+            ),
           ),
           child: const Center(
           child: Text("This is my first app?!!!!"),
