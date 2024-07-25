@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:hell0_world/style_text.dart';
 
+// Alignment? startAlignment;
+// var startAlignment = Alignment.topRight;
+// final startAlignment = Alignment.topRight;
 const startAlignment = Alignment.topRight;
 const endAlignment = Alignment.bottomLeft;
 
@@ -20,14 +24,8 @@ class GradientContainer extends StatelessWidget{
         ),
       ),
       child: const Center(
-        child: Text("This is my first flutter app",
-        style: TextStyle(
-          backgroundColor: Colors.cyan,
-          color: Color.fromARGB(255, 18, 21, 15),
-          fontSize: 32,
+        child: StyleText("           Hello!..            \n Welcome to flutter"),
         ),
-        ),
-      ),
-    );
-  }
+        );
+    }
 }
