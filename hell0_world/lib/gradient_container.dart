@@ -22,7 +22,7 @@ class GradientContainer extends StatelessWidget{
         ),
       ),
       child: Center(
-        child: Image.asset('assets/images/background1.jpg')
+        child: Image.asset('assets/images/fish.png', width: 400, height: 400, alignment: Alignment.center,)
         // child: StyleText("Welcome to flutter"),
         ),
         );
