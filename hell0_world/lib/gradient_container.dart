@@ -9,22 +9,20 @@ const endAlignment = Alignment.bottomLeft;
 
 class GradientContainer extends StatelessWidget{
   // const GradientContainer({key}) : super(key: key);
-  const GradientContainer({super.key});
+  const GradientContainer({super.key, required this.colours});
+  final List<Color> colours;
   @override
   Widget build(context){
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: const [
-            Color.fromARGB(255, 156, 125, 209),
-            Color.fromARGB(255, 86, 12, 215),
-          ],
+          colors: colours,
           begin: startAlignment,
           end: endAlignment,
         ),
       ),
       child: const Center(
-        child: StyleText("           Hello!..            \n Welcome to flutter"),
+        child: StyleText("Welcome to flutter"),
         ),
         );
     }
