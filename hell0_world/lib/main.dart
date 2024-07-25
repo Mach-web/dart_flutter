@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(
-    MaterialApp(
+    const MaterialApp(
       home: Scaffold(
         // backgroundColor: Color.fromARGB(255, 58, 22, 120),
         body: GradientContainer(),
@@ -12,6 +12,8 @@ void main() {
 }
 
 class GradientContainer extends StatelessWidget{
+  // const GradientContainer({key}) : super(key: key);
+  const GradientContainer({super.key});
   @override
   Widget build(context){
     return Container(
@@ -29,7 +31,7 @@ class GradientContainer extends StatelessWidget{
         child: Text("This is my first flutter app",
         style: TextStyle(
           backgroundColor: Colors.cyan,
-          color: Color.fromARGB(255, 120, 228, 5),
+          color: Color.fromARGB(255, 18, 21, 15),
           fontSize: 32,
         ),
         ),
