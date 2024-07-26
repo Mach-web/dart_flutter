@@ -7,13 +7,19 @@ environment:
   sdk: '>=3.4.3 <4.0.0'
 
 dependencies:
+  firebase_auth: ^4.16.0
   flutter:
     sdk: flutter
+  flutter_local_notifications: ^17.2.1+2
+  google_fonts: ^6.2.1
+  google_maps_flutter: ^2.5.3
+  percent_indicator: ^4.2.3
+  timeago: ^3.7.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^3.0.0
+  flutter_lints: ^4.0.0
 
 flutter:
   uses-material-design: true
@@ -21,3 +27,10 @@ flutter:
     - assets/images/background1.jpg
     - assets/images/background2.jpg
     - assets/images/fish.png
+    - assets/images/dice-1.png
+    - assets/images/dice-2.png
+    - assets/images/dice-3.png
+    - assets/images/dice-4.png
+    - assets/images/dice-5.png
+    - assets/images/dice-6.png
+
