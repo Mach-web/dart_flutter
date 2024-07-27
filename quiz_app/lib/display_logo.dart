@@ -11,6 +11,13 @@ class DisplayLogo extends StatelessWidget{
         Image.asset(
           'assets/images/quiz-logo.png'
         ),
+        const Text(
+          "Learn Flutter the fun way!",
+          style: TextStyle(
+            fontSize: 35,
+            color: Colors.white
+          ),
+        ),
       ],
     );
   }
