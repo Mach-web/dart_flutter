@@ -9,7 +9,10 @@ class StartScreen extends StatelessWidget{
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Image.asset('assets/images/quiz-logo.png'
+          Opacity(
+            opacity: 0.5,
+            child: Image.asset('assets/images/quiz-logo.png'
+            ),
           ),
           const SizedBox(height: 50),
           const Text("Learn flutter the fun way",
