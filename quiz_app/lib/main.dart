@@ -17,7 +17,7 @@ void main(){
               end: Alignment.bottomLeft
             ),
           ),
-          child: StartScreen(),
+          child: const StartScreen(),
         ),
         // body: GradientContainer(
         //   Color.fromARGB(255, 76, 6, 88),
