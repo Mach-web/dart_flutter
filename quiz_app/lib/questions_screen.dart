@@ -12,6 +12,10 @@ class QuestionsScreen extends StatefulWidget{
 class _QuestionsScreenState extends State<QuestionsScreen>{
   @override
   Widget build(context){
-    return const Text("Done with the exercise");
+    return const MaterialApp(
+      home: Scaffold(
+        body: Center(child: Text("Done with exercise")),
+      ),
+    );
   }
 }
