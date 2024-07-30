@@ -20,17 +20,24 @@ class _QuestionsScreenState extends State<QuestionsScreen>{
         children: [
           const Text("Question", 
           style: TextStyle(
-            fontSize: 38,
+            fontSize: 40,
             color: Colors.white,
           ),
           ),
+
           const SizedBox(height: 40,
           ),
           AnswerButton(text: "Answer 1", onTap: (){}
           ),
+          const SizedBox(height: 20,
+          ),
           AnswerButton(text: "Answer 2", onTap: (){}
           ),
+          const SizedBox(height: 20,
+          ),
           AnswerButton(text: "Answer 3", onTap: (){}
+          ),
+          const SizedBox(height: 20,
           ),
           AnswerButton(text: "Answer 4", onTap: (){}
           ),  
