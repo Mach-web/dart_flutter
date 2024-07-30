@@ -12,21 +12,21 @@ class Quiz extends StatefulWidget{
 }
 
 class _QuizState extends State<Quiz>{
-  Widget? currentScreen;
+  var currentScreen = "home";
     
-  @override
-  void initState() {
-    // TODO: implement initState
-    currentScreen = StartScreen(switchScreen);
-    super.initState();
-  }
-
   void switchScreen(){
     setState(() {
-      print("Hello");
+      currentScreen = "quiz";
+    });
+  }
+  /*
+  Widget? currentScreen;
+  void switchScreen(){
+    setState(() {
       currentScreen = const QuestionsScreen();
     });
   }
+  */
 
   @override
   Widget build(context){
@@ -43,7 +43,9 @@ class _QuizState extends State<Quiz>{
               end: Alignment.bottomLeft
             ),
           ),
-          child: currentScreen,
+          child: currentScreen == "home"
+          ? StartScreen(switchScreen)
+          : const QuestionsScreen(),
         ),
         // body: GradientContainer(
         //   Color.fromARGB(255, 76, 6, 88),
