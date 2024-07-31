@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz_app/answer_button.dart';
 import 'package:quiz_app/data/questions.dart';
@@ -32,7 +33,13 @@ class _QuestionsScreenState extends State<QuestionsScreen>{
           ),
 
           ...currentQuestion.answers.map((answers){
-            return AnswerButton(text: answers, onTap: (){}
+            // List<Widget> sizedAnswerbutton = [const SizedBox(height: 20,), 
+            // AnswerButton(text: answers, onTap: (){})];
+            return Column(
+              children: [
+                const SizedBox(height: 20,),
+                AnswerButton(text: answers, onTap: (){})
+              ]
             );
           }),
         ],
