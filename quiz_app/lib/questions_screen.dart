@@ -4,7 +4,9 @@ import 'package:quiz_app/answer_button.dart';
 import 'package:quiz_app/data/questions.dart';
 
 class QuestionsScreen extends StatefulWidget{
-  const QuestionsScreen({super.key});
+  const QuestionsScreen(this.chosenAnswer, {super.key});
+
+  final void Function(String answer) chosenAnswer;
 
   @override
   State<QuestionsScreen> createState(){
@@ -15,12 +17,13 @@ class QuestionsScreen extends StatefulWidget{
 class _QuestionsScreenState extends State<QuestionsScreen>{
 
   var currentQuestionIndex = 0;
-  void nextQuestion(){
+  void nextQuestion(String selectedAnswer){
     setState(() {
+      widget.chosenAnswer(selectedAnswer);
       currentQuestionIndex++;
     });
   }
-
+  
   @override
   Widget build(context){
     final currentQuestion = questions[currentQuestionIndex];
@@ -35,7 +38,8 @@ class _QuestionsScreenState extends State<QuestionsScreen>{
           children: [
             Text(currentQuestion.text, 
             style: const TextStyle(
-              fontSize: 40,
+              fontSize: 45,
+              fontWeight: FontWeight.bold,
               color: Colors.white,
             ),
             textAlign: TextAlign.center,
@@ -44,29 +48,31 @@ class _QuestionsScreenState extends State<QuestionsScreen>{
             const SizedBox(height: sizedBoxHeight,
             ),
         
-            ...currentQuestion.shuffleAnswers().map((answers){
-              return 
-                AnswerButton(text: answers,
-                onTap: nextQuestion,
-                );
-              }),
+            // ...currentQuestion.shuffleAnswers().map((answers){
+            //   return 
+            //     AnswerButton(text: answers,
+            //     onTap: nextQuestion,
+            //     );
+            //   }),
             
               // List<Widget> sizedAnswerbutton = [const SizedBox(height: 20,), 
               // AnswerButton(text: answers, onTap: (){})];
-              // return Column(
-              //   // crossAxisAlignment: CrossAxisAlignment.stretch,
-              //   children: [
-              //     const SizedBox(height: sizedBoxHeight,
-              //     ),
-              //     AnswerButton(text: answers, onTap: (){}
-              //     ),
-              //   ]
-              // );
-          
+              ...currentQuestion.shuffleAnswers().map((answers){
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  const SizedBox(height: sizedBoxHeight,
+                  ),
+                  AnswerButton(text: answers, onTap: (){
+                    nextQuestion(answers);
+                  }
+                  ),
+                ]
+              );
+            })
           ],
         ),
       ),
     );
-
   }
 }
