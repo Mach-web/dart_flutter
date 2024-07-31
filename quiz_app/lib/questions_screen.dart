@@ -15,11 +15,12 @@ class QuestionsScreen extends StatefulWidget{
 class _QuestionsScreenState extends State<QuestionsScreen>{
   @override
   Widget build(context){
-    final currentQuestion = questions[1];
-    const double height = 20;
+    final currentQuestion = questions[0];
+    const double sizedBoxHeight = 20;
     return SizedBox(
       width: double.infinity,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(currentQuestion.text, 
@@ -29,19 +30,28 @@ class _QuestionsScreenState extends State<QuestionsScreen>{
           ),
           ),
 
-          const SizedBox(height: 40,
+          const SizedBox(height: sizedBoxHeight,
           ),
 
           ...currentQuestion.answers.map((answers){
+            return 
+              AnswerButton(text: answers,
+              onTap: (){},
+              );
+            }),
+    
             // List<Widget> sizedAnswerbutton = [const SizedBox(height: 20,), 
             // AnswerButton(text: answers, onTap: (){})];
-            return Column(
-              children: [
-                const SizedBox(height: 20,),
-                AnswerButton(text: answers, onTap: (){})
-              ]
-            );
-          }),
+            // return Column(
+            //   // crossAxisAlignment: CrossAxisAlignment.stretch,
+            //   children: [
+            //     const SizedBox(height: sizedBoxHeight,
+            //     ),
+            //     AnswerButton(text: answers, onTap: (){}
+            //     ),
+            //   ]
+            // );
+  
         ],
       ),
     );
