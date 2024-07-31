@@ -19,40 +19,44 @@ class _QuestionsScreenState extends State<QuestionsScreen>{
     const double sizedBoxHeight = 20;
     return SizedBox(
       width: double.infinity,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(currentQuestion.text, 
-          style: const TextStyle(
-            fontSize: 40,
-            color: Colors.white,
-          ),
-          ),
-
-          const SizedBox(height: sizedBoxHeight,
-          ),
-
-          ...currentQuestion.answers.map((answers){
-            return 
-              AnswerButton(text: answers,
-              onTap: (){},
-              );
-            }),
-    
-            // List<Widget> sizedAnswerbutton = [const SizedBox(height: 20,), 
-            // AnswerButton(text: answers, onTap: (){})];
-            // return Column(
-            //   // crossAxisAlignment: CrossAxisAlignment.stretch,
-            //   children: [
-            //     const SizedBox(height: sizedBoxHeight,
-            //     ),
-            //     AnswerButton(text: answers, onTap: (){}
-            //     ),
-            //   ]
-            // );
-  
-        ],
+      child: Container(
+        margin: const EdgeInsets.all(40),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(currentQuestion.text, 
+            style: const TextStyle(
+              fontSize: 40,
+              color: Colors.white,
+            ),
+            textAlign: TextAlign.center,
+            ),
+        
+            const SizedBox(height: sizedBoxHeight,
+            ),
+        
+            ...currentQuestion.shuffleAnswers().map((answers){
+              return 
+                AnswerButton(text: answers,
+                onTap: (){},
+                );
+              }),
+            
+              // List<Widget> sizedAnswerbutton = [const SizedBox(height: 20,), 
+              // AnswerButton(text: answers, onTap: (){})];
+              // return Column(
+              //   // crossAxisAlignment: CrossAxisAlignment.stretch,
+              //   children: [
+              //     const SizedBox(height: sizedBoxHeight,
+              //     ),
+              //     AnswerButton(text: answers, onTap: (){}
+              //     ),
+              //   ]
+              // );
+          
+          ],
+        ),
       ),
     );
 
