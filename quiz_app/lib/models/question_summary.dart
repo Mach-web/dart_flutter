@@ -9,24 +9,30 @@ class QuestionsSummary extends StatelessWidget{
   Widget build(context){
     return Container(
       margin: const EdgeInsets.all(40),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: summaryData.map((data){
-          return Row(children: [
-            Text(((data['question_index'] as int) + 1).toString(),
-            style: fontSize,),
-            Column(
-              // crossAxisAlignment: CrossAxisAlignment.stretch,
-              // mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-              Text(data['question'] as String, style: fontSize,),
-              Text(data['user_answer']as String, style: fontSize,),
-              Text(data['correct_answer'] as String, style: fontSize,)
-            ],),
-            const SizedBox(height: 20,),
-          ],);
-        }).toList(),
+      child: SizedBox(
+        height:500,
+        // Create a scroll
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: summaryData.map((data){
+              return Row(children: [
+                Text(((data['question_index'] as int) + 1).toString(),
+                style: fontSize,),
+                Column(
+                  // crossAxisAlignment: CrossAxisAlignment.stretch,
+                  // mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                  Text(data['question'] as String, style: fontSize,),
+                  Text(data['user_answer']as String, style: fontSize,),
+                  Text(data['correct_answer'] as String, style: fontSize,)
+                ],),
+                const SizedBox(height: 20,),
+              ],);
+            }).toList(),
+          ),
+        ),
       ),
     );
   }
