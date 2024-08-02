@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz_app/data/questions.dart';
 import 'package:quiz_app/models/question_summary.dart';
@@ -24,6 +25,13 @@ class ResultsScreen extends StatelessWidget{
 
   @override
   Widget build(context){
+    final summaryData = getSummaryData();
+    var numTotalQuestions = questions.length;
+    var numCorrectAnswers = summaryData.where((data){
+      return data['correct_answer'] == data['user_answer'];
+    }).length;
+
+    const fontSize = TextStyle(fontSize: 32);
     return SizedBox(
       width: double.infinity,
       child: Container(
@@ -31,11 +39,14 @@ class ResultsScreen extends StatelessWidget{
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text("You passed X of Y questions"),
+            Text("You passed $numCorrectAnswers of $numTotalQuestions questions",
+            style: fontSize,
+            ),
             const SizedBox(height: 30,
             ),
             QuestionsSummary(
-              summaryData: getSummaryData(),
+              fontSize,
+              summaryData: summaryData,
               ),
             const SizedBox(height: 30,
             ),
