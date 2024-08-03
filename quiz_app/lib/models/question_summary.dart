@@ -3,16 +3,15 @@ import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class QuestionsSummary extends StatelessWidget{
-  const QuestionsSummary(this.fontSize, {super.key, required this.summaryData});
+  const QuestionsSummary({super.key, required this.summaryData});
   final List<Map<String, Object>> summaryData;
-  final fontSize;
 
   @override
   Widget build(context){
     return Container(
       margin: const EdgeInsets.all(40),
       child: SizedBox(
-        height:500,
+        height:750,
         // Create a scroll
         child: SingleChildScrollView(
           child: Column(
@@ -40,22 +39,29 @@ class QuestionsSummary extends StatelessWidget{
                       fontWeight: FontWeight.bold),
                       ),
                     ),
+                    const SizedBox(width: 30,),
 
 
                   // Style the question and answers
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                    Text(data['question'] as String, 
-                    style: GoogleFonts.lato(fontSize: 38, color: Colors.white,
-                    ),
-                    ),
-                    Text(data['user_answer']as String,
-                    style: GoogleFonts.lato(fontSize: 35, color: const Color.fromARGB(255, 63, 3, 73),
-                    ),
-                    textAlign: TextAlign.left,),
-                    Text(data['correct_answer'] as String, style: fontSize,)
-                  ],),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                      Text(data['question'] as String, 
+                      style: GoogleFonts.lato(fontSize: 38, 
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold
+                      ),
+                      ),
+                      Text(data['user_answer']as String,
+                      style: GoogleFonts.lato(fontSize: 35, color:const Color.fromARGB(255, 230, 230, 4),
+                      ),
+                      ),
+                      // textAlign: TextAlign.left,),
+                      Text(data['correct_answer'] as String, 
+                      style: GoogleFonts.amita(fontSize: 35, color: const Color.fromARGB(255, 154, 205, 228)),)
+                    ],),
+                  ),
                   const SizedBox(height: 20,),
                 ],),
               );

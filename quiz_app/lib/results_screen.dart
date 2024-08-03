@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:quiz_app/data/questions.dart';
 import 'package:quiz_app/models/question_summary.dart';
+import 'package:quiz_app/quiz.dart';
 
 class ResultsScreen extends StatelessWidget{
   const ResultsScreen({super.key, required this.chosenAnswers});
@@ -22,6 +24,12 @@ class ResultsScreen extends StatelessWidget{
     return summary;
   }
 
+  void retakeQuiz(){
+    setState(){
+      const Quiz();
+    }
+  }
+
 
   @override
   Widget build(context){
@@ -31,7 +39,7 @@ class ResultsScreen extends StatelessWidget{
       return data['correct_answer'] == data['user_answer'];
     }).length;
 
-    const fontSize = TextStyle(fontSize: 32);
+  
     return SizedBox(
       width: double.infinity,
       child: Container(
@@ -40,21 +48,30 @@ class ResultsScreen extends StatelessWidget{
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text("You passed $numCorrectAnswers of $numTotalQuestions questions",
-            style: fontSize,
+            style: GoogleFonts.lato(
+              fontSize: 40,
+              fontWeight: FontWeight.bold,
+              color: const Color.fromARGB(255, 219, 200, 154),
+            ),
             ),
             const SizedBox(height: 30,
             ),
             QuestionsSummary(
-              fontSize,
               summaryData: summaryData,
               ),
             const SizedBox(height: 30,
             ),
-            TextButton(onPressed: (){}, 
-            child: const Text(
-              "Retake Quiz"
+            TextButton.icon(onPressed: retakeQuiz,
+            style: TextButton.styleFrom(
+              foregroundColor: const Color.fromARGB(255, 219, 200, 154),
             ),
+            icon: const Icon(Icons.restart_alt, 
+            size: 38,
             ),
+             label: const Text("Retake Quiz",
+             style: TextStyle(fontSize: 36),
+             ),
+             ),
           ],
         ),
       ),
