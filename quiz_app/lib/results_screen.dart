@@ -6,9 +6,10 @@ import 'package:quiz_app/models/question_summary.dart';
 import 'package:quiz_app/quiz.dart';
 
 class ResultsScreen extends StatelessWidget{
-  const ResultsScreen({super.key, required this.chosenAnswers});
+  const ResultsScreen({super.key, required this.chosenAnswers, required this.onRestart});
   
   final List<String> chosenAnswers;
+  final void Function() onRestart;
 
   List<Map<String, Object>> getSummaryData(){
     final List<Map<String, Object>> summary = [];
@@ -23,13 +24,6 @@ class ResultsScreen extends StatelessWidget{
     }
     return summary;
   }
-
-  void retakeQuiz(){
-    setState(){
-      const Quiz();
-    }
-  }
-
 
   @override
   Widget build(context){
@@ -61,7 +55,7 @@ class ResultsScreen extends StatelessWidget{
               ),
             const SizedBox(height: 30,
             ),
-            TextButton.icon(onPressed: retakeQuiz,
+            TextButton.icon(onPressed: onRestart,
             style: TextButton.styleFrom(
               foregroundColor: const Color.fromARGB(255, 219, 200, 154),
             ),
