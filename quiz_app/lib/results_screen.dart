@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quiz_app/data/questions.dart';
 import 'package:quiz_app/models/question_summary.dart';
-import 'package:quiz_app/quiz.dart';
 
 class ResultsScreen extends StatelessWidget{
   const ResultsScreen({super.key, required this.chosenAnswers, required this.onRestart});
