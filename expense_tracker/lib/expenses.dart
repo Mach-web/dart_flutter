@@ -5,7 +5,6 @@ class Expenses extends StatefulWidget{
 
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return _ExpensesState();
   }
 }
@@ -14,7 +13,6 @@ class _ExpensesState extends State<Expenses>{
   
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return const Scaffold(
       body: Column(
         children: [
