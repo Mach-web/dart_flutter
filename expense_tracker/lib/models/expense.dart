@@ -1,5 +1,13 @@
-enum Category {food, travel, leisure, work}
+import 'package:flutter/material.dart';
+// import 'package:uuid/uuid.dart';
+// import 'package:intl/intl.dart';
 
+enum Category {food, travel, leisure, work}
+const categoryIcons = {
+  Category.food: Icons.lunch_dining,
+  Category.travel: Icons.flight_takeoff,
+  Category.leisure: Icons.work
+}
 class Expense{
   Expense({required this.title, 
   required this.amount, 
@@ -12,4 +20,8 @@ class Expense{
   final double amount;
   final DateTime date;
   final Category category;
+
+  DateTime get formattedDate{
+    return date;
+  }
 } 
