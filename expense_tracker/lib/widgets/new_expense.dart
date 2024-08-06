@@ -46,16 +46,20 @@ class _NewExpenseState extends State<NewExpense>{
                 label: Text("Amount", style: TextStyle(fontSize: 38),)
               ),
             ),
-            ElevatedButton(onPressed: (){}, 
-            child: const Text("Clear text", style: TextStyle(fontSize: 38),
-                ),            
-            ),
-            ElevatedButton(onPressed: (){
-              // print(_enteredTitle);
-              print(_titleController.text);
-              print(_amountController.text);
-            }, 
-            child: const Text("Save Expense", style: TextStyle(fontSize: 38),)
+            const SizedBox(height: 20,),
+            Row(
+              children: [
+                ElevatedButton(onPressed: (){
+                  Navigator.pop(context);
+                }, 
+                child: const Text("Cancel", style: TextStyle(fontSize: 35),
+                    ),            
+                ),
+                const Spacer(),
+                ElevatedButton(onPressed: (){}, 
+                  child: const Text("Save Expense", style: TextStyle(fontSize: 35),)
+                ),
+              ],
             ),
         ],
       ),
