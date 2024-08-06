@@ -19,18 +19,19 @@ class _NewExpenseState extends State<NewExpense>{
   void _presentDatePicker () async{
     final now = DateTime.now();
     final firstDate = DateTime(now.year - 1, now.month, now.day);
-    final _datePicker = await showDatePicker(
+    final datePicker = await showDatePicker(
       context: context, 
       firstDate: firstDate, 
       lastDate: now, 
       initialDate: now
       );
     setState(() {
-      _selectedDate = _datePicker;
+      _selectedDate = datePicker;
     });
   }
   final _titleController = TextEditingController();
   final _amountController = TextEditingController();
+  Category _selectedCategory = Category.leisure;
 
   @override
   void dispose(){
@@ -85,17 +86,35 @@ class _NewExpenseState extends State<NewExpense>{
             ),
   
             const SizedBox(height: 20,),
+            const SizedBox(height: 16,),
             Row(
               children: [
+                DropdownButton(
+                  value: _selectedCategory,
+                  items: Category.values.map((category) => DropdownMenuItem(
+                    value: category,
+                    child: Text(category.name.toUpperCase(),style: const TextStyle(fontSize: 32),),
+                    ),
+                  ).toList(),
+                  onChanged: (value){
+                    if(value==null){
+                      return;
+                    }
+                    setState(() {
+                      _selectedCategory=value;
+                    });
+                  }
+                  ),
+                const Spacer(),
                 ElevatedButton(onPressed: (){
                   Navigator.pop(context);
                 }, 
-                child: const Text("Cancel", style: TextStyle(fontSize: 35),
+                child: const Text("Cancel", style: TextStyle(fontSize: 32),
                     ),            
                 ),
                 const Spacer(),
                 ElevatedButton(onPressed: (){}, 
-                  child: const Text("Save Expense", style: TextStyle(fontSize: 35),)
+                  child: const Text("Save Expense", style: TextStyle(fontSize: 32),)
                 ),
               ],
             ),
