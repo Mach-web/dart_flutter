@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:expense_tracker/models/expense.dart';
 
 class NewExpense extends StatefulWidget{
-  const NewExpense({super.key});
+  const NewExpense({super.key, required this.addExpense});
+  final void Function(Expense expense) addExpense;
 
   @override
   State<NewExpense> createState() {
@@ -27,7 +28,9 @@ class _NewExpenseState extends State<NewExpense>{
       context: context, 
       firstDate: firstDate, 
       lastDate: now, 
-      initialDate: now);
+      initialDate: now,
+      builder: (context, child) => Transform.scale(scale: 1.667, child: child)
+      );
     setState(() {
       _selectedDate = pickedDate;
     });
@@ -53,6 +56,8 @@ class _NewExpenseState extends State<NewExpense>{
         );
         return;
     }
+    widget.addExpense(
+      Expense(title: _titleController.text, amount: enteredAmount, date: _selectedDate!, category: _selectedCategory),);
   }
   @override
   void dispose(){
@@ -134,7 +139,6 @@ class _NewExpenseState extends State<NewExpense>{
                 child: const Text("Cancel", style: TextStyle(fontSize: 32),
                     ),            
                 ),
-                const Spacer(),
                 ElevatedButton(onPressed: _submitExpenseData, 
                   child: const Text("Save Expense", style: TextStyle(fontSize: 32),)
                 ),
