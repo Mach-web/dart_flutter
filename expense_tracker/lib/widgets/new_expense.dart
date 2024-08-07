@@ -15,24 +15,25 @@ class _NewExpenseState extends State<NewExpense>{
   void _saveTitle(inputText){
     _enteredTitle = inputText;
   }*/
+  final _titleController = TextEditingController();
+  final _amountController = TextEditingController();
   DateTime? _selectedDate;
-  void _presentDatePicker () async{
+  Category _selectedCategory = Category.leisure;
+  
+  void _presentDatePicker() async{
     final now = DateTime.now();
     final firstDate = DateTime(now.year - 1, now.month, now.day);
-    final datePicker = await showDatePicker(
+    final pickedDate = await showDatePicker(
       context: context, 
       firstDate: firstDate, 
       lastDate: now, 
-      initialDate: now
-      );
+      initialDate: now);
     setState(() {
-      _selectedDate = datePicker;
+      _selectedDate = pickedDate;
     });
-  }
-  final _titleController = TextEditingController();
-  final _amountController = TextEditingController();
-  Category _selectedCategory = Category.leisure;
 
+  }
+  
   void _submitExpenseData(){
     final enteredAmount = double.tryParse(_amountController.text);
     final amountIsInvalid = enteredAmount == null || enteredAmount < 0;
@@ -91,8 +92,8 @@ class _NewExpenseState extends State<NewExpense>{
                     // center content vertically
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text(_selectedDate==null? "Select Date":dateFormatter.format(_selectedDate!), 
-                        style: const TextStyle(fontSize: 38),),
+                      Text(_selectedDate == null?"Select Date":dateFormatter.format(_selectedDate!), 
+                        style: const TextStyle(fontSize: 35),),
                       IconButton(onPressed: _presentDatePicker, 
                       icon: const Icon(Icons.calendar_month_outlined), iconSize: 38,),
                     ],
@@ -107,17 +108,18 @@ class _NewExpenseState extends State<NewExpense>{
               children: [
                 DropdownButton(
                   value: _selectedCategory,
-                  items: Category.values.map((category) => DropdownMenuItem(
-                    value: category,
-                    child: Text(category.name.toUpperCase(),style: const TextStyle(fontSize: 32),),
-                    ),
-                  ).toList(),
+                  items: Category.values.map((category) =>
+                    DropdownMenuItem(
+                      value: category,
+                      child: Text(category.name.toUpperCase(), style: const TextStyle(fontSize: 32),),
+                      ),
+                  ).toList(), 
                   onChanged: (value){
-                    if(value==null){
+                    if(value == null){
                       return;
                     }
                     setState(() {
-                      _selectedCategory=value;
+                      _selectedCategory = value;
                     });
                   }
                   ),
