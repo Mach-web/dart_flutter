@@ -68,84 +68,91 @@ class _NewExpenseState extends State<NewExpense>{
   }
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Theme.of(context).appBarTheme.backgroundColor,
-      padding:  const EdgeInsets.fromLTRB(16, 50, 16, 16),
-      child: Column(
-        children: [
-          TextField(
-            controller: _titleController,
-            // onChanged: _saveTitle,
-            maxLength: 50,
-            style: Theme.of(context).textTheme.labelMedium,
-            decoration: InputDecoration(
-              label: Text("Title", style: Theme.of(context).textTheme.labelSmall,),
-            ),
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    controller: _amountController,
-                    style: Theme.of(context).textTheme.labelSmall,
-                    keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
-                      prefixText: "\$ ",
-                      label: Text("Amount", style: Theme.of(context).textTheme.labelSmall,)
-                    ),
-                  ),
+    final keyboardSpace = MediaQuery.of(context).viewInsets.bottom;
+
+    return SizedBox(
+      height: double.infinity,
+      child: SingleChildScrollView(
+        child: Container(
+          color: Theme.of(context).appBarTheme.backgroundColor,
+          padding:  EdgeInsets.fromLTRB(16, 60, 16, keyboardSpace+16),
+          child: Column(
+            children: [
+              TextField(
+                controller: _titleController,
+                // onChanged: _saveTitle,
+                maxLength: 50,
+                style: Theme.of(context).textTheme.labelMedium,
+                decoration: InputDecoration(
+                  label: Text("Title", style: Theme.of(context).textTheme.labelSmall,),
                 ),
-                const SizedBox(width: 10,),
-                Expanded(child: 
-                  Row(
-                    // push content to end of the row
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    // center content vertically
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(_selectedDate == null?"Select Date":dateFormatter.format(_selectedDate!), 
-                        style: Theme.of(context).textTheme.labelMedium,),
-                      IconButton(onPressed: _presentDatePicker, 
-                      icon: const Icon(Icons.calendar_month_outlined), iconSize: 16,),
-                    ],
-                  ),
-                  )
-              ],
-            ),
-  
-            const SizedBox(height: 10,),
-            const SizedBox(height: 8,),
-            Row(
-              children: [
-                DropdownButton(
-                  value: _selectedCategory,
-                  items: Category.values.map((category) =>
-                    DropdownMenuItem(
-                      value: category,
-                      child: Text(category.name.toUpperCase(), style: Theme.of(context).textTheme.labelMedium,),
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: TextField(
+                        controller: _amountController,
+                        style: Theme.of(context).textTheme.labelSmall,
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                          prefixText: "\$ ",
+                          label: Text("Amount", style: Theme.of(context).textTheme.labelSmall,)
+                        ),
                       ),
-                  ).toList(), 
-                  onChanged: (value){
-                    if(value == null){
-                      return;
-                    }
-                    setState(() {
-                      _selectedCategory = value;
-                    });
-                  }
-                  ),
-                const Spacer(),
-                ElevatedButton(onPressed: (){
-                  Navigator.pop(context);
-                }, 
-                child: Text("Cancel", style: Theme.of(context).textTheme.labelMedium,),            
+                    ),
+                    const SizedBox(width: 10,),
+                    Expanded(child: 
+                      Row(
+                        // push content to end of the row
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        // center content vertically
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(_selectedDate == null?"Select Date":dateFormatter.format(_selectedDate!), 
+                            style: Theme.of(context).textTheme.labelMedium,),
+                          IconButton(onPressed: _presentDatePicker, 
+                          icon: const Icon(Icons.calendar_month_outlined), iconSize: 16,),
+                        ],
+                      ),
+                      )
+                  ],
                 ),
-                ElevatedButton(onPressed: _submitExpenseData, 
-                  child: Text("Save Expense",  style: Theme.of(context).textTheme.labelMedium,)
+          
+                const SizedBox(height: 10,),
+                const SizedBox(height: 8,),
+                Row(
+                  children: [
+                    DropdownButton(
+                      value: _selectedCategory,
+                      items: Category.values.map((category) =>
+                        DropdownMenuItem(
+                          value: category,
+                          child: Text(category.name.toUpperCase(), style: Theme.of(context).textTheme.labelMedium,),
+                          ),
+                      ).toList(), 
+                      onChanged: (value){
+                        if(value == null){
+                          return;
+                        }
+                        setState(() {
+                          _selectedCategory = value;
+                        });
+                      }
+                      ),
+                    const Spacer(),
+                    ElevatedButton(onPressed: (){
+                      Navigator.pop(context);
+                    }, 
+                    child: Text("Cancel", style: Theme.of(context).textTheme.labelMedium,),            
+                    ),
+                    ElevatedButton(onPressed: _submitExpenseData, 
+                      child: Text("Save Expense",  style: Theme.of(context).textTheme.labelMedium,)
+                    ),
+                  ],
                 ),
-              ],
-            ),
-        ],
+            ],
+          ),
+        ),
       ),
     );
   }
