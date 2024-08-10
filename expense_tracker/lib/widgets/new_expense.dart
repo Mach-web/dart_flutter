@@ -29,7 +29,7 @@ class _NewExpenseState extends State<NewExpense>{
       firstDate: firstDate, 
       lastDate: now, 
       initialDate: now,
-      builder: (context, child) => Transform.scale(scale: 1.667, child: child)
+      builder: (context, child) => Transform.scale(scale: 1, child: child)
       );
     setState(() {
       _selectedDate = pickedDate;
@@ -44,13 +44,13 @@ class _NewExpenseState extends State<NewExpense>{
       showDialog(
         context: context, 
         builder: (ctx)=> AlertDialog(
-          title: const Text("Error Alert", style: TextStyle(fontSize: 32),),
-          content: const Text("Enter a valid inputs", style: TextStyle(fontSize: 32),),
+          title: Text("Error Alert", style: Theme.of(context).textTheme.labelSmall,),
+          content: Text("Enter a valid inputs", style: Theme.of(context).textTheme.labelSmall,),
           actions: [
             TextButton(onPressed: (){
               Navigator.pop(context);
             }, 
-            child: const Text("OK", style: TextStyle(fontSize: 32),),)
+            child: Text("OK", style: Theme.of(context).textTheme.labelSmall,),)
           ],
         )
         );
@@ -58,7 +58,7 @@ class _NewExpenseState extends State<NewExpense>{
     }
     widget.addExpense(
       Expense(title: _titleController.text, amount: enteredAmount, date: _selectedDate!, category: _selectedCategory),);
-    Navigator.pop(context);
+      Navigator.pop(context);
   }
   @override
   void dispose(){
@@ -68,7 +68,8 @@ class _NewExpenseState extends State<NewExpense>{
   }
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
+      color: Theme.of(context).appBarTheme.backgroundColor,
       padding:  const EdgeInsets.fromLTRB(16, 50, 16, 16),
       child: Column(
         children: [
@@ -76,9 +77,9 @@ class _NewExpenseState extends State<NewExpense>{
             controller: _titleController,
             // onChanged: _saveTitle,
             maxLength: 50,
-            style: const TextStyle(fontSize: 35),
-            decoration: const InputDecoration(
-              label: Text("Title", style: TextStyle(fontSize: 38),),
+            style: Theme.of(context).textTheme.labelMedium,
+            decoration: InputDecoration(
+              label: Text("Title", style: Theme.of(context).textTheme.labelSmall,),
             ),
             ),
             Row(
@@ -86,15 +87,15 @@ class _NewExpenseState extends State<NewExpense>{
                 Expanded(
                   child: TextField(
                     controller: _amountController,
-                    style: const TextStyle(fontSize: 35),
+                    style: Theme.of(context).textTheme.labelSmall,
                     keyboardType: TextInputType.number,
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       prefixText: "\$ ",
-                      label: Text("Amount", style: TextStyle(fontSize: 38),)
+                      label: Text("Amount", style: Theme.of(context).textTheme.labelSmall,)
                     ),
                   ),
                 ),
-                const SizedBox(width: 20,),
+                const SizedBox(width: 10,),
                 Expanded(child: 
                   Row(
                     // push content to end of the row
@@ -103,17 +104,17 @@ class _NewExpenseState extends State<NewExpense>{
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(_selectedDate == null?"Select Date":dateFormatter.format(_selectedDate!), 
-                        style: const TextStyle(fontSize: 35),),
+                        style: Theme.of(context).textTheme.labelMedium,),
                       IconButton(onPressed: _presentDatePicker, 
-                      icon: const Icon(Icons.calendar_month_outlined), iconSize: 38,),
+                      icon: const Icon(Icons.calendar_month_outlined), iconSize: 16,),
                     ],
                   ),
                   )
               ],
             ),
   
-            const SizedBox(height: 20,),
-            const SizedBox(height: 16,),
+            const SizedBox(height: 10,),
+            const SizedBox(height: 8,),
             Row(
               children: [
                 DropdownButton(
@@ -121,7 +122,7 @@ class _NewExpenseState extends State<NewExpense>{
                   items: Category.values.map((category) =>
                     DropdownMenuItem(
                       value: category,
-                      child: Text(category.name.toUpperCase(), style: const TextStyle(fontSize: 32),),
+                      child: Text(category.name.toUpperCase(), style: Theme.of(context).textTheme.labelMedium,),
                       ),
                   ).toList(), 
                   onChanged: (value){
@@ -137,11 +138,10 @@ class _NewExpenseState extends State<NewExpense>{
                 ElevatedButton(onPressed: (){
                   Navigator.pop(context);
                 }, 
-                child: const Text("Cancel", style: TextStyle(fontSize: 32),
-                    ),            
+                child: Text("Cancel", style: Theme.of(context).textTheme.labelMedium,),            
                 ),
                 ElevatedButton(onPressed: _submitExpenseData, 
-                  child: const Text("Save Expense", style: TextStyle(fontSize: 32),)
+                  child: Text("Save Expense",  style: Theme.of(context).textTheme.labelMedium,)
                 ),
               ],
             ),

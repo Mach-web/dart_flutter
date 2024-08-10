@@ -2,6 +2,7 @@ import 'package:expense_tracker/widgets/expenses_list.dart';
 import 'package:flutter/material.dart';
 import 'package:expense_tracker/models/expense.dart';
 import 'package:expense_tracker/widgets/new_expense.dart';
+import 'package:expense_tracker/widgets/charts/chart.dart';
 
 class Expenses extends StatefulWidget{
   const Expenses({super.key});
@@ -29,7 +30,27 @@ class _ExpensesState extends State<Expenses>{
   ];
 
   void addExpensetoList(Expense expense){
-    _registeredExpenses.add(expense);
+    setState(() {
+      _registeredExpenses.add(expense);
+    });
+  }
+  void removeExpenseFromList(Expense expense){
+    final removedExpenseIndex = _registeredExpenses.indexOf(expense);
+    setState(() {
+      _registeredExpenses.remove(expense);
+    });
+    ScaffoldMessenger.of(context).clearSnackBars();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: const Text("Expense deleted"),
+        duration: const Duration(seconds: 5),
+        action: SnackBarAction(label: "Undo", 
+          onPressed: (){
+            setState(() {
+              _registeredExpenses.insert(removedExpenseIndex, expense);
+            });
+          }),)
+    );
   }
   void _openAddExpenseOverlay(){
     showModalBottomSheet(context: context, 
@@ -40,21 +61,27 @@ class _ExpensesState extends State<Expenses>{
   
   @override
   Widget build(BuildContext context) {
+    Widget mainPage = Center(
+      child: Text("No expenses found. Use the + icon to add.", 
+      style: Theme.of(context).textTheme.titleLarge,),
+    );
+    if(_registeredExpenses.isNotEmpty){
+      mainPage = ExpensesList(expensesList: _registeredExpenses, 
+          onRemoveExpense: removeExpenseFromList,);
+    }
     return Scaffold(
       appBar: AppBar(
-        title: const Text("FlutterExpenseTracker", style: TextStyle(fontSize: 45),),
+        title: Text("FlutterExpenseTracker", style: Theme.of(context).textTheme.titleLarge,),
         actions: [
           IconButton(onPressed: _openAddExpenseOverlay, 
           icon: const Icon(Icons.add),
-          iconSize: 45,)
+          iconSize: 12,)
         ],
       ),
       body: Column(
         children: [
-          const Text("The chart"),
-          Expanded(
-            child: ExpensesList(expensesList: _registeredExpenses)
-            ),
+          Chart(expenses: _registeredExpenses),
+          Expanded(child: mainPage),
         ],
       ),
     );

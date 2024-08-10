@@ -1,13 +1,102 @@
 import 'package:flutter/material.dart';
 import 'package:expense_tracker/widgets/expenses.dart';
+import 'package:flutter/services.dart';
+
+var kColorScheme = ColorScheme.fromSeed(seedColor: 
+  const Color.fromARGB(255, 96, 59, 181));
+
+var kDarkColorScheme = ColorScheme.fromSeed(
+  seedColor: const Color.fromARGB(255, 5, 99, 125),);
 
 void main(){
-  runApp(
+  WidgetsFlutterBinding.ensureInitialized;
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]).then((fn){
+    runApp(
     MaterialApp(
-      theme: ThemeData(useMaterial3: true),
+      darkTheme: ThemeData.dark().copyWith(
+        colorScheme: kDarkColorScheme,
+        brightness: Brightness.dark,
+
+        appBarTheme: const AppBarTheme().copyWith(
+          backgroundColor: kDarkColorScheme.onPrimaryContainer,
+          foregroundColor: kDarkColorScheme.primaryContainer
+        ),
+        cardTheme: const CardTheme().copyWith(
+          color: kDarkColorScheme.onPrimaryContainer,
+          margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: kDarkColorScheme.onPrimaryContainer,
+            foregroundColor: kDarkColorScheme.primaryContainer
+          ),
+        ),
+        textTheme: ThemeData().textTheme.copyWith(
+          titleLarge: TextStyle(
+            color: kDarkColorScheme.primaryContainer,
+            fontWeight: FontWeight.bold,
+            fontSize: 15
+          ),
+          labelMedium: TextStyle(
+            fontSize: 13,
+            fontWeight: FontWeight.normal,
+            color: kDarkColorScheme.primaryContainer
+          ),
+          labelSmall: TextStyle(
+            fontSize: 11,
+            fontWeight: FontWeight.normal,
+            color: kDarkColorScheme.primaryContainer
+          ),
+        ),
+      ),
+
+
+      theme: ThemeData().copyWith(
+        colorScheme: kColorScheme,
+        appBarTheme: const AppBarTheme().copyWith(
+          backgroundColor: kColorScheme.primaryContainer,
+          foregroundColor: kColorScheme.onPrimaryContainer
+        ),
+        cardTheme: const CardTheme().copyWith(
+          color: kColorScheme.primaryContainer,
+          margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: kColorScheme.primaryContainer,
+            foregroundColor: kColorScheme.onPrimaryContainer
+          ),
+        ),
+        textTheme: ThemeData().textTheme.copyWith(
+          titleLarge: TextStyle(
+            color: kColorScheme.onPrimaryContainer,
+            fontWeight: FontWeight.bold,
+            fontSize: 15
+          ),
+          labelMedium: TextStyle(
+            fontSize: 13,
+            fontWeight: FontWeight.normal,
+            color: kColorScheme.onPrimaryContainer
+          ),
+          labelSmall: TextStyle(
+            fontSize: 11,
+            fontWeight: FontWeight.normal,
+            color: kColorScheme.onPrimaryContainer
+          ),
+        ),
+    
+          // bodyMedium: const TextStyle(
+          //   fontSize: 35,
+          //   fontWeight: FontWeight.normal
+          // )
+        ),
+      themeMode: ThemeMode.dark,
       home: const Expenses()
-    ),
+    ), 
   );
+  });
 }
 // void main() {
 //   runApp(const MyApp());
