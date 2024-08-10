@@ -75,7 +75,7 @@ class _NewExpenseState extends State<NewExpense>{
       child: SingleChildScrollView(
         child: Container(
           color: Theme.of(context).appBarTheme.backgroundColor,
-          padding:  EdgeInsets.fromLTRB(16, 60, 16, keyboardSpace+16),
+          padding:  EdgeInsets.fromLTRB(16, 16, 16, keyboardSpace+16),
           child: Column(
             children: [
               TextField(
