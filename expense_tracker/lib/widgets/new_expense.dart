@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:expense_tracker/models/expense.dart';
+import 'package:flutter/cupertino.dart';
+import 'dart:io';
 
 class NewExpense extends StatefulWidget{
   const NewExpense({super.key, required this.addExpense});
@@ -41,11 +43,27 @@ class _NewExpenseState extends State<NewExpense>{
     final enteredAmount = double.tryParse(_amountController.text);
     final bool amountIsInvalid = enteredAmount == null || enteredAmount <= 0;
     if(_titleController.text.trim().isEmpty || amountIsInvalid || _selectedDate == null){
+      if(Platform.isIOS){
+      showCupertinoDialog(context: context, builder: (ctx) => CupertinoAlertDialog(
+        title: Text("Error Alert", style: Theme.of(context).textTheme.labelSmall,),
+          content: Text("Please make sure that you entered the correct value for title, amount and date",
+           style: Theme.of(context).textTheme.labelSmall,),
+          actions: [
+            TextButton(onPressed: (){
+              Navigator.pop(context);
+            }, 
+            child: Text("OK", style: Theme.of(context).textTheme.labelSmall,),)
+          ],
+        ),
+      );
+      }
+      else{
       showDialog(
         context: context, 
         builder: (ctx)=> AlertDialog(
           title: Text("Error Alert", style: Theme.of(context).textTheme.labelSmall,),
-          content: Text("Enter a valid inputs", style: Theme.of(context).textTheme.labelSmall,),
+          content: Text("Please make sure that you entered the correct value for title, amount and date",
+           style: Theme.of(context).textTheme.labelSmall,),
           actions: [
             TextButton(onPressed: (){
               Navigator.pop(context);
@@ -53,7 +71,7 @@ class _NewExpenseState extends State<NewExpense>{
             child: Text("OK", style: Theme.of(context).textTheme.labelSmall,),)
           ],
         )
-        );
+        );}
         return;
     }
     widget.addExpense(
