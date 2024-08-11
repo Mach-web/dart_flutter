@@ -92,7 +92,7 @@ void main(){
           //   fontWeight: FontWeight.normal
           // )
         ),
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.dark,
       home: const Expenses()
     ), 
   );
