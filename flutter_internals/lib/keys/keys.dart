@@ -52,6 +52,9 @@ class _KeysState extends State<Keys> {
 
   @override
   Widget build(BuildContext context) {
+    var list1 = [1, 5, 6];
+    list1.add(12);
+    print(list1);
     return Column(
       children: [
         Align(
