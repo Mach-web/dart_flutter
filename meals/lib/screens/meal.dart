@@ -26,8 +26,7 @@ class MealsScreen extends StatelessWidget{
         itemBuilder: (ctx, index) => Container(
           child: Column(
             children: [
-              if(meals[index].title == title)
-              Text(meals[index].title),
+              Text(meals[index].title, style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Theme.of(context).colorScheme.onSurface),),
             ],
           ),
         )
