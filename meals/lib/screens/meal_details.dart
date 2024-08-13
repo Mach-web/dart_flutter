@@ -3,8 +3,8 @@ import 'package:flutter/widgets.dart';
 import 'package:meals/main.dart';
 import 'package:meals/models/meal.dart';
 
-class MealDetails extends StatelessWidget{
- const MealDetails({super.key, required this.meal});
+class MealDetailsScreen extends StatelessWidget{
+ const MealDetailsScreen({super.key, required this.meal});
 
   final Meal meal;
   @override
@@ -15,7 +15,12 @@ class MealDetails extends StatelessWidget{
           meal.title
         ),
       ),
-      body: Text(meal.ingredients[1]),
+      body: Image.network(
+        meal.imageUrl,
+        height: 300,
+        width: double.infinity,
+        fit: BoxFit.cover,
+      ),
     );
   }
 }

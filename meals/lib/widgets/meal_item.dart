@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:meals/models/meal.dart';
-import 'package:meals/screens/meal.dart';
-import 'package:meals/screens/meal_details.dart';
 import 'package:meals/widgets/meal_item_trait.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class MealItem extends StatelessWidget{
-  const MealItem({super.key, required this.meal});
+  const MealItem({super.key, required this.meal, required this.displayMealDetails});
   final Meal meal;
-
-  void displayMealDetails(BuildContext context, Meal meal){
-    Navigator.of(context).push(MaterialPageRoute(builder: 
-      (ctx) => MealDetails(meal: meal),),);
-  }
+  final Function() displayMealDetails;
 
   @override
   Widget build(BuildContext context) =>
@@ -26,7 +20,7 @@ class MealItem extends StatelessWidget{
     // 3D effect-shadow
     elevation: 2,
     child: InkWell(
-      onTap: () => displayMealDetails(context, meal),
+      onTap: () => displayMealDetails(),
       child: Stack(
         children: [
           FadeInImage(
