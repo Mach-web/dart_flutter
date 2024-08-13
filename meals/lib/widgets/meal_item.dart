@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meals/models/meal.dart';
+import 'package:meals/screens/meal.dart';
+import 'package:meals/widgets/meal_item_trait.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class MealItem extends StatelessWidget{
@@ -49,6 +51,17 @@ class MealItem extends StatelessWidget{
                       fontSize: 20,
                     ),
                     ),
+                  Row(
+                    children: [
+                      MealItemTrait(icon: Icons.timelapse, label: "${meal.duration} mins"),
+                      const SizedBox(width: 20,),
+                      MealItemTrait(icon: Icons.work, 
+                      label: meal.complexity.name[0].toUpperCase() + meal.complexity.name.substring(1),),
+                      const SizedBox(width: 20,),
+                      MealItemTrait(icon: Icons.attach_money, 
+                      label: meal.affordability.name[0].toUpperCase() + meal.affordability.name.substring(1),),
+                    ],
+                  )
                 ],
               ),
             )),
