@@ -14,11 +14,12 @@ class MealItemTrait extends StatelessWidget{
           size: 20,
           color: Colors.white,
           ),
-        const SizedBox(width: 6,),
+        const SizedBox(width: 4,),
         Text(
           label,
           style: const TextStyle(
-            color: Colors.white
+            color: Colors.white,
+            fontWeight: FontWeight.bold
           ),
         )
       ],
