@@ -21,13 +21,13 @@ class _TabsState extends State<Tabs>{
     if(isFavorite){
       setState(() {
         favouriteMeals.remove(meal);
-        _showInfoMessage("Favorite removed successfully");
+        _showInfoMessage("Meal removed from favorites");
       });
     }
     else{
       setState(() {
         favouriteMeals.add(meal);
-        _showInfoMessage("Favorite added successfully");
+        _showInfoMessage("Meal added to favorites");
       });
     }
   }
