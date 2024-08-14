@@ -48,6 +48,15 @@ class _TabsState extends State<Tabs>{
     });
   }
 
+  void onSelectDrawerItem(String identifier){
+    if(identifier == "filters"){
+
+    }
+    else{
+      Navigator.of(context).pop();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget activeScreen = CategoriesScreen(toggleFavourite: onToggleFavourite,);
@@ -60,7 +69,7 @@ class _TabsState extends State<Tabs>{
       appBar: AppBar(
         title: Text(activeScreenTitle),
       ),
-      drawer: MainDrawer(),
+      drawer: MainDrawer(onSelectDrawerItem: onSelectDrawerItem,),
       body: activeScreen,
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectPage,
