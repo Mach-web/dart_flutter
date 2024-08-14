@@ -8,6 +8,7 @@ class FiltersScreen extends StatefulWidget{
   }
 }
 
+bool gluttenFreeFilterState = false;
 class _FiltersScreenState extends State<FiltersScreen>{
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,11 @@ class _FiltersScreenState extends State<FiltersScreen>{
         children: [
           SwitchListTile(
             value: value, 
-            onChanged: onChanged,
+            onChanged: (ischecked){
+              setState(() {
+                gluttenFreeFilterState = ischecked;
+              });
+            },
             title: Text(
               "Gluten free",
               style: Theme.of(context).textTheme.titleLarge!.copyWith(
