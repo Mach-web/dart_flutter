@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meals/models/meal.dart';
 import 'package:meals/screens/categories.dart';
 import 'package:meals/screens/meal.dart';
 
@@ -12,6 +13,18 @@ class Tabs extends StatefulWidget{
 
 class _TabsState extends State<Tabs>{
   int _selectedPageIndex = 0;
+  final List<Meal> favouriteMeals = [];
+
+  void toggleFavourite(Meal meal){
+    final bool isFavorite = favouriteMeals.contains(meal);
+
+    if(isFavorite){
+      favouriteMeals.remove(meal);
+    }
+    else{
+      favouriteMeals.add(meal);
+    }
+  }
 
   void _selectPage(int index){
     setState(() {

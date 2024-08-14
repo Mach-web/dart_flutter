@@ -13,6 +13,9 @@ class MealDetailsScreen extends StatelessWidget{
         title: Text(
           meal.title
         ),
+        actions: [
+          IconButton(onPressed: (){}, icon: const Icon(Icons.star))
+        ],
       ),
       body: ListView(
           children: [
@@ -51,7 +54,7 @@ class MealDetailsScreen extends StatelessWidget{
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 8),
               child: Text(
-                "${index+1}. ${meal.steps[index]}.",
+                "${index+1}. ${meal.steps[index]}",
                 textAlign: TextAlign.left,
                 style:  Theme.of(context).textTheme.bodyLarge!.copyWith(
                   color: Theme.of(context).colorScheme.onSurface,
