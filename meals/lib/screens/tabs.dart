@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meals/data/dummy_data.dart';
 import 'package:meals/models/meal.dart';
 import 'package:meals/screens/categories.dart';
 import 'package:meals/screens/meal.dart';
@@ -15,7 +16,7 @@ class _TabsState extends State<Tabs>{
   int _selectedPageIndex = 0;
   final List<Meal> favouriteMeals = [];
 
-  void toggleFavourite(Meal meal){
+  void onToggleFavourite(Meal meal){
     final bool isFavorite = favouriteMeals.contains(meal);
 
     if(isFavorite){
@@ -34,10 +35,10 @@ class _TabsState extends State<Tabs>{
 
   @override
   Widget build(BuildContext context) {
-    Widget activeScreen = const CategoriesScreen();
+    Widget activeScreen = CategoriesScreen(toggleFavourite: onToggleFavourite,);
     var activeScreenTitle = "What is your taste?";
     if(_selectedPageIndex == 1){
-      activeScreen = const MealsScreen(meals: []);
+      activeScreen = MealsScreen(meals: [dummyMeals[1]], toggleFavourite: onToggleFavourite,);
       activeScreenTitle = "Your Favourites";
     }
     return Scaffold(
