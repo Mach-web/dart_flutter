@@ -13,13 +13,28 @@ class MainDrawer extends StatelessWidget{
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
               gradient: LinearGradient(colors: [
-                Theme.of(context).colorScheme.primary,
-                Theme.of(context).colorScheme.primary.withOpacity(0.55)
+                Theme.of(context).colorScheme.secondary,
+                Theme.of(context).colorScheme.secondary.withOpacity(0.65)
               ],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight)
+              begin: Alignment.bottomCenter,
+              end: Alignment.topCenter)
             ),
-            child: Text("Hello"))
+            child: Row(
+              children: [
+                Icon(
+                  Icons.fastfood,
+                  size: 48,
+                  color: Theme.of(context).colorScheme.onPrimary,
+                ),
+                const SizedBox(width: 18,),
+                Text("Cooking up",
+                style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                  color: Theme.of(context).colorScheme.onPrimary,
+                  fontWeight: FontWeight.bold
+                  ),
+                ),
+              ],
+            ))
           
         ],
       ),
