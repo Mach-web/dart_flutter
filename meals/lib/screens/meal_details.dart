@@ -13,11 +13,29 @@ class MealDetailsScreen extends StatelessWidget{
           meal.title
         ),
       ),
-      body: Image.network(
-        meal.imageUrl,
-        height: 300,
-        width: double.infinity,
-        fit: BoxFit.cover,
+      body: Column(
+        children: [
+          Image.network(
+            meal.imageUrl,
+            height: 300,
+            width: double.infinity,
+            fit: BoxFit.cover,
+          ),
+          const SizedBox(height: 14),
+          Text(
+            "Ingredients",
+            style: Theme.of(context).textTheme.titleLarge!.copyWith(
+              color: Theme.of(context).colorScheme.primary,
+              fontWeight: FontWeight.bold
+            ),),
+          for(final ingredient in meal.ingredients)
+          Text(
+            ingredient,
+            style:  Theme.of(context).textTheme.bodyLarge!.copyWith(
+              color: Theme.of(context).colorScheme.onSurface,
+            ),
+          ),
+        ],
       ),
     );
   }
