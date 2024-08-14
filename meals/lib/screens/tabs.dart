@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:meals/data/dummy_data.dart';
 import 'package:meals/models/meal.dart';
 import 'package:meals/screens/categories.dart';
 import 'package:meals/screens/meal.dart';
+import 'package:meals/widgets/main_drawer.dart';
 
 class Tabs extends StatefulWidget{
   const Tabs({super.key});
@@ -36,7 +36,9 @@ class _TabsState extends State<Tabs>{
     ScaffoldMessenger.of(context).clearSnackBars();
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text(message),),
+        content: Text(message, style: Theme.of(context).textTheme.titleMedium!.copyWith(
+          fontWeight: FontWeight.bold
+        )),),
     );
   }
 
@@ -58,6 +60,7 @@ class _TabsState extends State<Tabs>{
       appBar: AppBar(
         title: Text(activeScreenTitle),
       ),
+      drawer: MainDrawer(),
       body: activeScreen,
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectPage,
