@@ -18,13 +18,26 @@ class _TabsState extends State<Tabs>{
 
   void onToggleFavourite(Meal meal){
     final bool isFavorite = favouriteMeals.contains(meal);
-
     if(isFavorite){
-      favouriteMeals.remove(meal);
+      setState(() {
+        favouriteMeals.remove(meal);
+        _showInfoMessage("Favorite removed successfully");
+      });
     }
     else{
-      favouriteMeals.add(meal);
+      setState(() {
+        favouriteMeals.add(meal);
+        _showInfoMessage("Favorite added successfully");
+      });
     }
+  }
+
+  void _showInfoMessage(String message){
+    ScaffoldMessenger.of(context).clearSnackBars();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),),
+    );
   }
 
   void _selectPage(int index){
@@ -38,7 +51,7 @@ class _TabsState extends State<Tabs>{
     Widget activeScreen = CategoriesScreen(toggleFavourite: onToggleFavourite,);
     var activeScreenTitle = "What is your taste?";
     if(_selectedPageIndex == 1){
-      activeScreen = MealsScreen(meals: [dummyMeals[1]], toggleFavourite: onToggleFavourite,);
+      activeScreen = MealsScreen(meals: favouriteMeals, toggleFavourite: onToggleFavourite,);
       activeScreenTitle = "Your Favourites";
     }
     return Scaffold(
