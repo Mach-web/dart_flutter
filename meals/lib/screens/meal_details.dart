@@ -5,6 +5,7 @@ class MealDetailsScreen extends StatelessWidget{
  const MealDetailsScreen({super.key, required this.meal});
 
   final Meal meal;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,50 +14,52 @@ class MealDetailsScreen extends StatelessWidget{
           meal.title
         ),
       ),
-      body: Column(
-        children: [
-          Image.network(
-            meal.imageUrl,
-            height: 300,
-            width: double.infinity,
-            fit: BoxFit.cover,
-          ),
-          const SizedBox(height: 14),
-          Text(
-            "Ingredients",
-            style: Theme.of(context).textTheme.titleLarge!.copyWith(
-              color: Theme.of(context).colorScheme.primary,
-              fontWeight: FontWeight.bold
-            ),),
-          const SizedBox(height: 10,),
-          for(final ingredient in meal.ingredients)
-          Text(
-            ingredient,
-            style:  Theme.of(context).textTheme.bodyLarge!.copyWith(
-              color: Theme.of(context).colorScheme.onSurface,
+      body: ListView(
+          children: [
+            Image.network(
+              meal.imageUrl,
+              height: 300,
+              width: double.infinity,
+              fit: BoxFit.cover,
             ),
-          ),
-          const SizedBox(height: 14),
-          Text(
-            "Steps",
-            style: Theme.of(context).textTheme.titleLarge!.copyWith(
-              color: Theme.of(context).colorScheme.primary,
-              fontWeight: FontWeight.bold
-            ),),
-          const SizedBox(height: 10,),
-          for(final step in meal.steps)
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              step,
+            const SizedBox(height: 14),
+            Text(
+              "Ingredients",
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                color: Theme.of(context).colorScheme.primary,
+                fontWeight: FontWeight.bold
+              ),),
+            const SizedBox(height: 10,),
+            for(final ingredient in meal.ingredients)
+            Text(
+              ingredient,
               textAlign: TextAlign.center,
               style:  Theme.of(context).textTheme.bodyLarge!.copyWith(
                 color: Theme.of(context).colorScheme.onSurface,
               ),
             ),
-          ),
-        ],
-      ),
+            const SizedBox(height: 14),
+            Text(
+              "Steps",
+              style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                color: Theme.of(context).colorScheme.primary,
+                fontWeight: FontWeight.bold
+              ),),
+            const SizedBox(height: 10,),
+            for(var index = 0; index < meal.steps.length; index++)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 8),
+              child: Text(
+                "${index+1}. ${meal.steps[index]}.",
+                textAlign: TextAlign.left,
+                style:  Theme.of(context).textTheme.bodyLarge!.copyWith(
+                  color: Theme.of(context).colorScheme.onSurface,
+                ),
+              ),
+            ),
+          ],
+        ),
     );
   }
 }
