@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meals/data/dummy_data.dart';
 import 'package:meals/models/meal.dart';
 import 'package:meals/screens/categories.dart';
 import 'package:meals/screens/filters.dart';
@@ -72,6 +73,22 @@ class _TabsState extends State<TabsScreen>{
 
   @override
   Widget build(BuildContext context) {
+    final filteredMeals = dummyMeals.where((meal){
+      if(!meal.isGlutenFree && selectedFilters[Filters.gluttenFree]!){
+        return false;
+      }
+      if(!meal.isLactoseFree && selectedFilters[Filters.lactoseFree]!){
+        return false;
+      }
+      if(!meal.isVegan && selectedFilters[Filters.vegan]!){
+        return false;
+      }
+      if(!meal.isVegetarian && selectedFilters[Filters.vegetarian]!){
+        return false;
+      }
+      return true;
+    });
+
     Widget activeScreen = CategoriesScreen(toggleFavourite: onToggleFavourite,);
     var activeScreenTitle = "What is your taste?";
     if(_selectedPageIndex == 1){
