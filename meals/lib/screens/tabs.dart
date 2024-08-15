@@ -5,6 +5,13 @@ import 'package:meals/screens/filters.dart';
 import 'package:meals/screens/meal.dart';
 import 'package:meals/widgets/main_drawer.dart';
 
+const Map<Filters, bool>kSelectedFilters = {
+    Filters.gluttenFree: false,
+    Filters.lactoseFree: false,
+    Filters.vegan: false,
+    Filters.vegetarian: false
+  };
+
 class TabsScreen extends StatefulWidget{
   const TabsScreen({super.key});
   @override
@@ -16,6 +23,7 @@ class TabsScreen extends StatefulWidget{
 class _TabsState extends State<TabsScreen>{
   int _selectedPageIndex = 0;
   final List<Meal> favouriteMeals = [];
+  late Map<Filters, bool> selectedFilters;
 
   void onToggleFavourite(Meal meal){
     final bool isFavorite = favouriteMeals.contains(meal);
@@ -53,9 +61,12 @@ class _TabsState extends State<TabsScreen>{
     Navigator.of(context).pop();
     if(identifier == "filters"){
       final result = await Navigator.of(context).push<Map<Filters, bool>>(
-        MaterialPageRoute(builder: (ctx) => const FiltersScreen())
+        MaterialPageRoute(builder: (ctx) => const FiltersScreen(),
+        ),
       );
-      print(result);
+    setState(() {
+      selectedFilters = result ?? kSelectedFilters;    
+    });
     }
   }
 
