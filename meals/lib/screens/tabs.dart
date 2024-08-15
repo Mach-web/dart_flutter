@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:meals/models/meal.dart';
 import 'package:meals/screens/categories.dart';
 import 'package:meals/screens/filters.dart';
 import 'package:meals/screens/meal.dart';
 import 'package:meals/widgets/main_drawer.dart';
 
-class Tabs extends StatefulWidget{
-  const Tabs({super.key});
+class TabsScreen extends StatefulWidget{
+  const TabsScreen({super.key});
   @override
-  State<Tabs> createState() {
+  State<TabsScreen> createState() {
     return _TabsState();
   }
 }
 
-class _TabsState extends State<Tabs>{
+class _TabsState extends State<TabsScreen>{
   int _selectedPageIndex = 0;
   final List<Meal> favouriteMeals = [];
 
@@ -53,7 +52,7 @@ class _TabsState extends State<Tabs>{
   void onSelectDrawerItem(String identifier){
     Navigator.of(context).pop();
     if(identifier == "filters"){
-      Navigator.of(context).pushReplacement(
+      Navigator.of(context).push(
         MaterialPageRoute(builder: (ctx) => const FiltersScreen())
       );
     }
