@@ -37,7 +37,7 @@ class _FiltersScreenState extends State<FiltersScreen>{
       //   }
       // ),
       body: PopScope(
-        canPop: true,
+        canPop: false,
         onPopInvoked: (bool didPop){
           if(didPop) return;
           Navigator.of(context).pop({

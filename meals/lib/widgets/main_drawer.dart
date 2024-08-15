@@ -53,7 +53,7 @@ class MainDrawer extends StatelessWidget{
             ),
           ListTile(
             leading: Icon(
-              Icons.settings,
+              Icons.filter_alt,
                 size: 26,
                 color: Theme.of(context).colorScheme.secondary,),
               title: Text(
