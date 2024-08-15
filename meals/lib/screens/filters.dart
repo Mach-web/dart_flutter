@@ -19,7 +19,7 @@ class _FiltersScreenState extends State<FiltersScreen>{
       body: Column(
         children: [
           SwitchListTile(
-            value: value, 
+            value: gluttenFreeFilterState, 
             onChanged: (ischecked){
               setState(() {
                 gluttenFreeFilterState = ischecked;
