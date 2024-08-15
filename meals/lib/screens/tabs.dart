@@ -24,7 +24,7 @@ class TabsScreen extends StatefulWidget{
 class _TabsState extends State<TabsScreen>{
   int _selectedPageIndex = 0;
   final List<Meal> favouriteMeals = [];
-  late Map<Filters, bool> selectedFilters;
+  Map<Filters, bool> selectedFilters = kSelectedFilters;
 
   void onToggleFavourite(Meal meal){
     final bool isFavorite = favouriteMeals.contains(meal);
@@ -87,9 +87,9 @@ class _TabsState extends State<TabsScreen>{
         return false;
       }
       return true;
-    });
+    }).toList();
 
-    Widget activeScreen = CategoriesScreen(toggleFavourite: onToggleFavourite,);
+    Widget activeScreen = CategoriesScreen(toggleFavourite: onToggleFavourite, filteredMeals: filteredMeals,);
     var activeScreenTitle = "What is your taste?";
     if(_selectedPageIndex == 1){
       activeScreen = MealsScreen(meals: favouriteMeals, toggleFavourite: onToggleFavourite,);
