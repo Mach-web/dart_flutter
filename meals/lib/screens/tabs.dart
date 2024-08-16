@@ -8,6 +8,7 @@ import 'package:meals/widgets/main_drawer.dart';
 
 import 'package:meals/providers/meals_provider.dart';
 import 'package:meals/providers/favorite_provider.dart';
+import 'package:meals/providers/filters_provider.dart';
 
 const Map<Filters, bool>kSelectedFilters = {
     Filters.gluttenFree: false,
