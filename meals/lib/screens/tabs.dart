@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:meals/models/meal.dart';
 import 'package:meals/screens/categories.dart';
 import 'package:meals/screens/filters.dart';
 import 'package:meals/screens/meal.dart';
@@ -46,15 +45,15 @@ class _TabsState extends ConsumerState<TabsScreen>{
   //   }
   // }
 
-  void _showInfoMessage(String message){
-    ScaffoldMessenger.of(context).clearSnackBars();
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message, style: Theme.of(context).textTheme.titleMedium!.copyWith(
-          fontWeight: FontWeight.bold
-        )),),
-    );
-  }
+  // void _showInfoMessage(String message){
+  //   ScaffoldMessenger.of(context).clearSnackBars();
+  //   ScaffoldMessenger.of(context).showSnackBar(
+  //     SnackBar(
+  //       content: Text(message, style: Theme.of(context).textTheme.titleMedium!.copyWith(
+  //         fontWeight: FontWeight.bold
+  //       )),),
+  //   );
+  // }
 
   void _selectPage(int index){
     setState(() {
