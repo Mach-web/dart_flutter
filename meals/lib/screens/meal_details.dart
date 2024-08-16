@@ -37,7 +37,8 @@ const MealDetailsScreen({super.key, required this.meal,
               ),
             ),
           ),
-        );}, icon: const Icon(Icons.star))
+        );}, 
+        icon: const Icon(Icons.star),),
         ],
       ),
       body: ListView(
