@@ -12,7 +12,6 @@ class FiltersScreen extends ConsumerStatefulWidget{
   }
 }
 
-
 bool gluttenFreeFilterState = false;
 bool lactoseFreeFilterState = false;
 bool vegetarianFreeFilterState = false;
@@ -21,11 +20,11 @@ bool veganFreeFilterState = false;
 class _FiltersScreenState extends ConsumerState<FiltersScreen>{
   @override
   Widget build(BuildContext context) {
-    final activeFilters = ref.watch(filterMealsProvider);
-    gluttenFreeFilterState = activeFilters[Filters.gluttenFree]!;
-    lactoseFreeFilterState = activeFilters[Filters.lactoseFree]!;
-    vegetarianFreeFilterState = activeFilters[Filters.vegetarian]!;
-    veganFreeFilterState = activeFilters[Filters.vegan]!;
+    // final activeFilters = ref.watch(filterMealsProvider);
+    // gluttenFreeFilterState = activeFilters[Filters.gluttenFree]!;
+    // lactoseFreeFilterState = activeFilters[Filters.lactoseFree]!;
+    // vegetarianFreeFilterState = activeFilters[Filters.vegetarian]!;
+    // veganFreeFilterState = activeFilters[Filters.vegan]!;
 
     return Scaffold(
       appBar: AppBar(
@@ -53,7 +52,7 @@ class _FiltersScreenState extends ConsumerState<FiltersScreen>{
             Filters.vegetarian: vegetarianFreeFilterState,
             Filters.vegan: veganFreeFilterState
           });
-          // Navigator.of(context).pop();
+          Navigator.of(context).pop();
         },
         child: Column(
           children: [

@@ -62,11 +62,11 @@ class _TabsState extends ConsumerState<TabsScreen>{
     });
   }
 
-  void onSelectDrawerItem(String identifier) async{
+  void onSelectDrawerItem(String identifier){
     Navigator.of(context).pop();
     if(identifier == "filters"){
-      // final result = 
-      await Navigator.of(context).push<Map<Filters, bool>>(
+      // final result = await 
+      Navigator.of(context).push(
         MaterialPageRoute(builder: (ctx) => const FiltersScreen(),
         ),
       );
