@@ -27,9 +27,11 @@ class _CategoriesScreenState extends State<CategoriesScreen> with SingleTickerPr
 
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 1500),
       lowerBound: 0,
       upperBound: 1);
+
+    _animationController.forward();
   }
 
   @override
@@ -53,7 +55,9 @@ class _CategoriesScreenState extends State<CategoriesScreen> with SingleTickerPr
 
    @override
   Widget build(BuildContext context) {
-    return GridView(
+    return AnimatedBuilder(
+      animation: _animationController,
+      child:  GridView(
         padding: const EdgeInsets.all(20),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
@@ -63,6 +67,14 @@ class _CategoriesScreenState extends State<CategoriesScreen> with SingleTickerPr
         children: availableCategories.map(
           (category) => CategoryGridItem(category: category, onSelectCategory: ()=>displayMealsScreen(context, category),)
           ).toList()
-          );
+          ),
+      builder: (context, child){
+        return Padding(
+          padding: EdgeInsets.only(
+            top: (1 - _animationController.value) * 200
+            ),
+            child: child,
+            );
+      });
   }
 }
