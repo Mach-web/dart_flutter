@@ -14,6 +14,8 @@ const MealDetailsScreen({super.key, required this.meal,
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final List<Meal> favorites = ref.watch(favoriteMealsProvider);
+    final bool isFavorite = favorites.contains(meal);
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -38,7 +40,10 @@ const MealDetailsScreen({super.key, required this.meal,
             ),
           ),
         );}, 
-        icon: const Icon(Icons.star),),
+        icon: Icon(isFavorite
+          ? Icons.star
+          : Icons.star_border),
+          color: Colors.orangeAccent,),
         ],
       ),
       body: ListView(
