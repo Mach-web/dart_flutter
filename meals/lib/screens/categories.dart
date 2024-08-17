@@ -31,7 +31,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> with SingleTickerPr
       lowerBound: 0,
       upperBound: 1);
 
-    _animationController.forward();
+    _animationController.repeat();
   }
 
   @override
