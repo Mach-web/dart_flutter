@@ -5,7 +5,7 @@ import 'package:meals/screens/meal.dart';
 import 'package:meals/models/category.dart';
 import 'package:meals/models/meal.dart';
 
-class CategoriesScreen extends StatelessWidget{
+class CategoriesScreen extends StatefulWidget{
   const CategoriesScreen({super.key, 
   // required this.toggleFavourite, 
   required this.filteredMeals
@@ -14,8 +14,32 @@ class CategoriesScreen extends StatelessWidget{
   // final Function(Meal meal) toggleFavourite;
   final List<Meal> filteredMeals;
 
+  @override
+  State<CategoriesScreen> createState() => _CategoriesScreenState();
+}
+
+class _CategoriesScreenState extends State<CategoriesScreen> with SingleTickerProviderStateMixin{
+  late AnimationController _animationController;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 300),
+      lowerBound: 0,
+      upperBound: 1);
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
   void displayMealsScreen(BuildContext context, Category category){
-    final categoryMeals = filteredMeals
+    final categoryMeals = widget.filteredMeals
       .where((meal)=>meal.categories
       .contains(category.id),)
       .toList();
