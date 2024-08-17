@@ -28,7 +28,7 @@ class TabsScreen extends ConsumerStatefulWidget{
 class _TabsState extends ConsumerState<TabsScreen>{
   int _selectedPageIndex = 0;
   // final List<Meal> favouriteMeals = [];
-  Map<Filters, bool> selectedFilters = kSelectedFilters;
+  // Map<Filters, bool> selectedFilters = kSelectedFilters;
 
   // void onToggleFavourite(Meal meal){
   //   final bool isFavorite = favouriteMeals.contains(meal);
@@ -65,19 +65,21 @@ class _TabsState extends ConsumerState<TabsScreen>{
   void onSelectDrawerItem(String identifier) async{
     Navigator.of(context).pop();
     if(identifier == "filters"){
-      final result = await Navigator.of(context).push<Map<Filters, bool>>(
+      // final result = 
+      await Navigator.of(context).push<Map<Filters, bool>>(
         MaterialPageRoute(builder: (ctx) => const FiltersScreen(),
         ),
       );
-    setState(() {
-      selectedFilters = result ?? kSelectedFilters;    
-    });
+    // setState(() {
+    //   selectedFilters = result ?? kSelectedFilters;    
+    // });
     }
   }
 
   @override
   Widget build(BuildContext context) {
     final meals = ref.watch(mealsProvider);
+    final selectedFilters = ref.watch(filterMealsProvider);
     final filteredMeals = meals.where((meal){
       if(!meal.isGlutenFree && selectedFilters[Filters.gluttenFree]!){
         return false;
