@@ -46,7 +46,8 @@ const MealDetailsScreen({super.key, required this.meal,
             RotationTransition(turns: animation, child: child,),
           child: Icon(isFavorite
           ? Icons.star
-          : Icons.star_border),),
+          : Icons.star_border,
+          key: ValueKey(isFavorite),),),
           color: Colors.orangeAccent,),
         ],
       ),
