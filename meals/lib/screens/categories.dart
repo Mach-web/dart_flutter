@@ -73,7 +73,11 @@ class _CategoriesScreenState extends State<CategoriesScreen> with SingleTickerPr
           position: Tween(
             begin: const Offset(0, 0.4),
             end: const Offset(0, 0)
-          ).animate(_animationController),
+          ).animate(
+            CurvedAnimation(
+              parent: _animationController, 
+              curve: Curves.easeIn)
+          ),
           child: child,
         );
       /*  return Padding(
