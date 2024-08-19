@@ -40,9 +40,13 @@ const MealDetailsScreen({super.key, required this.meal,
             ),
           ),
         );}, 
-        icon: Icon(isFavorite
+        icon: AnimatedSwitcher(
+          duration: const Duration(milliseconds: 500),
+          transitionBuilder: (child, animation) => 
+            RotationTransition(turns: animation, child: child,),
+          child: Icon(isFavorite
           ? Icons.star
-          : Icons.star_border),
+          : Icons.star_border),),
           color: Colors.orangeAccent,),
         ],
       ),
