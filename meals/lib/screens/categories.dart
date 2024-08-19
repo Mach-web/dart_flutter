@@ -31,7 +31,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> with SingleTickerPr
       lowerBound: 0,
       upperBound: 1);
 
-    _animationController.repeat();
+    _animationController.forward();
   }
 
   @override
@@ -69,12 +69,20 @@ class _CategoriesScreenState extends State<CategoriesScreen> with SingleTickerPr
           ).toList()
           ),
       builder: (context, child){
-        return Padding(
+        return SlideTransition(
+          position: Tween(
+            begin: const Offset(0, 0.4),
+            end: const Offset(0, 0)
+          ).animate(_animationController),
+          child: child,
+        );
+      /*  return Padding(
           padding: EdgeInsets.only(
             top: (1 - _animationController.value) * 200
             ),
             child: child,
             );
+          */
       });
   }
 }
