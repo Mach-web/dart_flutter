@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_list/data/categories.dart';
+import 'package:shopping_list/models/category.dart';
 
 class NewItem extends StatefulWidget{
   @override
@@ -11,11 +12,15 @@ class NewItem extends StatefulWidget{
 class _NewItemState extends State<NewItem>{
   final _formKey = GlobalKey<FormState>();
   String _enteredName = "";
+  num _enteredNumber = 1;
+  Category _enteredCategory = categories[Categories.carbs]!;
 
   void _saveItem(){
     if(_formKey.currentState!.validate()){
       _formKey.currentState!.save();
       print(_enteredName);
+      print(_enteredNumber);
+      print(_enteredCategory);
     };
   }
   @override
@@ -48,7 +53,7 @@ class _NewItemState extends State<NewItem>{
                 children: [
                   Expanded(
                     child: TextFormField(
-                      initialValue: "1",
+                      initialValue: _enteredNumber.toString(),
                       keyboardType: TextInputType.number,
                       decoration: const InputDecoration(
                         label: Text("Quantity")
@@ -57,11 +62,15 @@ class _NewItemState extends State<NewItem>{
                         value == null || value.isEmpty || int.tryParse(value) == null || int.tryParse(value)! < 0
                         ?  "Enter a valid positive number"
                         : null,
+                      onSaved: (value){
+                        _enteredNumber = int.parse(value!);
+                      },
                     ),
                   ),
                   const SizedBox(width: 8,),
                   Expanded(
                     child: DropdownButtonFormField(
+                      value: _enteredCategory,
                       items: [
                         for (final category in categories.entries) 
                         DropdownMenuItem(
@@ -75,7 +84,9 @@ class _NewItemState extends State<NewItem>{
                           ),
                         ),
                       ],
-                      onChanged: (value){}),
+                      onChanged: (value){
+                        _enteredCategory = value!;
+                      }),
                   ),
                 ],
               ),
