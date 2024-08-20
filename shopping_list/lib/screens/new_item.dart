@@ -26,6 +26,7 @@ class _NewItemState extends State<NewItem>{
               validator: (value) => "",
             ),
             Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Expanded(
                   child: TextFormField(
