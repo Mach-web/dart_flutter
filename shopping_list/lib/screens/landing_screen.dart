@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_list/models/grocery_item.dart';
 import 'package:shopping_list/screens/new_item.dart';
 import 'package:shopping_list/widgets/landing_body.dart';
 
@@ -10,12 +11,19 @@ class LandingScreen extends StatefulWidget{
 }
 
 class _LandingScreenState extends State<LandingScreen> {
-  void _addItem(){
-    Navigator.of(context).push(
+  final List<GroceryItem> groceryItems = [];
+  void _addItem() async{
+    final groceryItem = await Navigator.of(context).push<GroceryItem>(
       MaterialPageRoute(builder: (context){
         return NewItem();
       })
     );
+    if(groceryItem == null){
+      return;
+    }
+    setState(() {
+      groceryItems.add(groceryItem);
+    });
   }
 
   @override
@@ -31,7 +39,7 @@ class _LandingScreenState extends State<LandingScreen> {
           icon: const Icon(Icons.add))
       ],
       ),
-      body:  const LandingBody()
+      body:  LandingBody(groceryItems: groceryItems,)
     );
   }
 }

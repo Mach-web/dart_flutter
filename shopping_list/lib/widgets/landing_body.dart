@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_list/data/dummy_items.dart';
+import 'package:shopping_list/models/grocery_item.dart';
+// import 'package:shopping_list/data/dummy_items.dart';
 
 class LandingBody extends StatelessWidget{
-  const LandingBody({super.key});
+  LandingBody({super.key, required this.groceryItems});
 
+  final List<GroceryItem> groceryItems;
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
