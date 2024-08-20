@@ -14,7 +14,18 @@ class _NewItemState extends State<NewItem>{
       appBar: AppBar(
         title: const Text("Add a new item"),
       ),
-      body: const Text("New item"),
+      body: Form(
+        child: Column(
+          children: [
+            TextFormField(
+              maxLength: 50,
+              decoration: const InputDecoration(
+                label: Text("Name")
+              ),
+              validator: (value) => "",
+            )
+          ],
+        )),
     );
   }
 }
