@@ -16,55 +16,67 @@ class _NewItemState extends State<NewItem>{
         title: const Text("Add a new item"),
       ),
       body: Form(
-        child: Column(
-          children: [
-            TextFormField(
-              maxLength: 50,
-              decoration: const InputDecoration(
-                label: Text("Name")
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              TextFormField(
+                maxLength: 50,
+                decoration: const InputDecoration(
+                  label: Text("Name")
+                ),
+                validator: (value){
+                  if(value == null || value.isEmpty || value.trim().length <= 1 || value.trim().length > 50){
+                    return "Enter a valid text between 1 and 50";
+                  }
+                  return null;
+                },
               ),
-              validator: (value) => "",
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Expanded(
-                  child: TextFormField(
-                    initialValue: "1",
-                    decoration: const InputDecoration(
-                      label: Text("Quantity")
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                      initialValue: "1",
+                      decoration: const InputDecoration(
+                        label: Text("Quantity")
+                      ),
+                      validator: (value) =>
+                        value == null || value.isEmpty || int.tryParse(value) == null || int.tryParse(value)! < 0
+                        ?  "Enter a valid positive number"
+                        : null,
                     ),
                   ),
-                ),
-                const SizedBox(width: 8,),
-                Expanded(
-                  child: DropdownButtonFormField(
-                    items: [
-                      for (final category in categories.entries) 
-                      DropdownMenuItem(
-                        value: category.value,
-                        child: Row(
-                          children: [
-                            Container(width: 16, height: 16, color: category.value.color),
-                            const SizedBox(width: 10,),
-                            Text(category.value.title)
-                          ],
+                  const SizedBox(width: 8,),
+                  Expanded(
+                    child: DropdownButtonFormField(
+                      items: [
+                        for (final category in categories.entries) 
+                        DropdownMenuItem(
+                          value: category.value,
+                          child: Row(
+                            children: [
+                              Container(width: 16, height: 16, color: category.value.color),
+                              const SizedBox(width: 10,),
+                              Text(category.value.title)
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
-                    onChanged: (value){}),
-                ),
-              ],
-            ),
-            const SizedBox(height: 18,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                TextButton(onPressed: (){}, child: const Text("Clear"),),
-                ElevatedButton(onPressed: (){}, child: const Text("Save Expense"),),
-              ],
-            )
-          ],
+                      ],
+                      onChanged: (value){}),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 18,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  TextButton(onPressed: (){}, child: const Text("Clear"),),
+                  ElevatedButton(onPressed: (){}, child: const Text("Save Expense"),),
+                ],
+              ),
+            ],
+          ),
         )),
     );
   }
