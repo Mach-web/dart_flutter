@@ -10,9 +10,13 @@ class NewItem extends StatefulWidget{
 
 class _NewItemState extends State<NewItem>{
   final _formKey = GlobalKey<FormState>();
+  String _enteredName = "";
 
   void _saveItem(){
-    _formKey.currentState!.validate();
+    if(_formKey.currentState!.validate()){
+      _formKey.currentState!.save();
+      print(_enteredName);
+    };
   }
   @override
   Widget build(BuildContext context) {
@@ -37,6 +41,7 @@ class _NewItemState extends State<NewItem>{
                   }
                   return null;
                 },
+                onSaved: (value)=>_enteredName = value!
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
