@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_list/models/grocery_item.dart';
 import 'package:shopping_list/screens/new_item.dart';
-import 'package:shopping_list/widgets/landing_body.dart';
 
 class LandingScreen extends StatefulWidget{
   const LandingScreen({super.key});
@@ -25,6 +24,26 @@ class _LandingScreenState extends State<LandingScreen> {
       groceryItems.add(groceryItem);
     });
   }
+  void _removeItem(GroceryItem item){
+    final itemIndex = groceryItems.indexOf(item);
+    setState(() {
+      groceryItems.remove(itemIndex);
+    });
+    ScaffoldMessenger.of(context).clearSnackBars();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text("Item deleted"),
+        duration: Duration(seconds: 5),
+        action: SnackBarAction(
+          label: "Undo", 
+          onPressed: (){
+            setState(() {
+              groceryItems.insert(itemIndex, item);
+            });
+          }),
+        ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +58,30 @@ class _LandingScreenState extends State<LandingScreen> {
           icon: const Icon(Icons.add))
       ],
       ),
-      body:  LandingBody(groceryItems: groceryItems,)
+      body: groceryItems.isEmpty
+      ? Center(
+        child: Text("Use the '+' icon to add some grocery items",
+        style: Theme.of(context).textTheme.titleMedium,
+        ),)
+      : ListView.builder(
+      itemCount: groceryItems.length,
+      itemBuilder: (ctx, index) =>
+        Dismissible(
+          key: ValueKey(groceryItems[index]),
+          child: ListTile(
+            leading: Container(
+              width: 20,
+              height: 20,
+              color: groceryItems[index].category.color,
+            ),
+            title: Text(groceryItems[index].name),
+            trailing: Text(groceryItems[index].quantity.toString()),
+          ),
+          onDismissed: (direction){
+            _removeItem(groceryItems[index]);
+            },
+          ),
+        ),
     );
   }
 }
