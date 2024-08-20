@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_list/widgets/landing_body.dart';
 
-class LandingPage extends StatelessWidget{
-  const LandingPage({super.key});
+class LandingScreen extends StatelessWidget{
+  const LandingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +12,7 @@ class LandingPage extends StatelessWidget{
           "Your Groceries"
         ),
       ),
-      body: const LandingPage(),
+      body:  const LandingBody()
     );
   }
 }
