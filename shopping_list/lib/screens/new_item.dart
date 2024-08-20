@@ -50,10 +50,18 @@ class _NewItemState extends State<NewItem>{
                             Text(category.value.title)
                           ],
                         ),
-                      )
+                      ),
                     ],
                     onChanged: (value){}),
-                )
+                ),
+              ],
+            ),
+            const SizedBox(height: 18,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                TextButton(onPressed: (){}, child: const Text("Clear"),),
+                ElevatedButton(onPressed: (){}, child: const Text("Save Expense"),),
               ],
             )
           ],
