@@ -3,11 +3,23 @@ import 'package:shopping_list/models/grocery_item.dart';
 // import 'package:shopping_list/data/dummy_items.dart';
 
 class LandingBody extends StatelessWidget{
-  LandingBody({super.key, required this.groceryItems});
+  const LandingBody({super.key, required this.groceryItems});
 
   final List<GroceryItem> groceryItems;
   @override
   Widget build(BuildContext context) {
+    if(groceryItems.isEmpty){
+      return Container(
+        alignment: Alignment.center,
+        // crossAxisAlignment: CrossAxisAlignment.center,
+        // mainAxisAlignment: MainAxisAlignment.center,
+        padding: const EdgeInsets.all(15),
+        child: Text(
+          "Use the '+' icon to add some grocery items",
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
+      );
+    }
     return ListView.builder(
       itemCount: groceryItems.length,
       itemBuilder: (ctx, index) =>
