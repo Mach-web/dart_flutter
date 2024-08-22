@@ -46,9 +46,9 @@ class _NewExpenseState extends State<NewExpense>{
       if(Platform.isIOS){
       showCupertinoDialog(context: context, builder: (ctx) => CupertinoAlertDialog(
         title: Text("Error Alert", style: Theme.of(context).textTheme.labelSmall,),
-          content: Text("Please make sure that you entered the correct value for title, amount and date",
-           style: Theme.of(context).textTheme.labelSmall,),
-          actions: [
+        content: Text("Please make sure that you entered the correct value for title, amount and date",
+          style: Theme.of(context).textTheme.labelSmall,),
+        actions: [
             TextButton(onPressed: (){
               Navigator.pop(context);
             }, 
@@ -70,7 +70,7 @@ class _NewExpenseState extends State<NewExpense>{
             }, 
             child: Text("OK", style: Theme.of(context).textTheme.labelSmall,),)
           ],
-        )
+        ),
         );}
         return;
     }

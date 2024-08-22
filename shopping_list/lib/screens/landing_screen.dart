@@ -27,13 +27,13 @@ class _LandingScreenState extends State<LandingScreen> {
   void _removeItem(GroceryItem item){
     final itemIndex = groceryItems.indexOf(item);
     setState(() {
-      groceryItems.remove(itemIndex);
+      groceryItems.remove(item);
     });
     ScaffoldMessenger.of(context).clearSnackBars();
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text("Item deleted"),
-        duration: Duration(seconds: 5),
+        content: const Text("Item deleted"),
+        duration: const Duration(seconds: 5),
         action: SnackBarAction(
           label: "Undo", 
           onPressed: (){
@@ -67,7 +67,7 @@ class _LandingScreenState extends State<LandingScreen> {
       itemCount: groceryItems.length,
       itemBuilder: (ctx, index) =>
         Dismissible(
-          key: ValueKey(groceryItems[index]),
+          key: ValueKey(groceryItems[index].id),
           child: ListTile(
             leading: Container(
               width: 20,
