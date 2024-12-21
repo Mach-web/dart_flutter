@@ -11,9 +11,9 @@ class AnswerButton extends StatelessWidget{
     return ElevatedButton(
       onPressed: onTap, 
       style: ElevatedButton.styleFrom(
-        textStyle: const TextStyle(fontSize: 35
+        textStyle: const TextStyle(fontSize: 15
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 40,
+        padding: const EdgeInsets.symmetric(horizontal: 8,
         vertical: 20,
         ),
         backgroundColor: const Color.fromARGB(255, 4, 25, 87
@@ -22,7 +22,7 @@ class AnswerButton extends StatelessWidget{
         // minimumSize: const Size(300, 60
         // ),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(40
+          borderRadius: BorderRadius.circular(8
           ),
           ),
       ),

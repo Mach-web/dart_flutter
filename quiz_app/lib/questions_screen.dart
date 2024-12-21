@@ -27,18 +27,18 @@ class _QuestionsScreenState extends State<QuestionsScreen>{
   @override
   Widget build(context){
     final currentQuestion = questions[currentQuestionIndex];
-    const double sizedBoxHeight = 20;
+    const double sizedBoxHeight = 8;
     return SizedBox(
       width: double.infinity,
       child: Container(
-        margin: const EdgeInsets.all(40),
+        margin: const EdgeInsets.all(8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(currentQuestion.text, 
             style: GoogleFonts.kalnia(
-              fontSize: 45,
+              fontSize: 15,
               fontWeight: FontWeight.bold,
               // color: Colors.white,
             ),

@@ -8,7 +8,7 @@ class QuestionsSummary extends StatelessWidget{
   @override
   Widget build(context){
     return Container(
-      margin: const EdgeInsets.all(40),
+      margin: const EdgeInsets.all(8),
       child: SizedBox(
         height:750,
         // Create a scroll
@@ -34,7 +34,7 @@ class QuestionsSummary extends StatelessWidget{
                         borderRadius: BorderRadius.circular(100)
                       ),
                       child: Text(((data['question_index'] as int) + 1).toString(),
-                      style: const TextStyle(fontSize: 30,
+                      style: const TextStyle(fontSize: 16,
                       fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -47,18 +47,18 @@ class QuestionsSummary extends StatelessWidget{
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                       Text(data['question'] as String, 
-                      style: GoogleFonts.lato(fontSize: 38, 
+                      style: GoogleFonts.lato(fontSize: 16, 
                       color: Colors.white,
                       fontWeight: FontWeight.bold
                       ),
                       ),
                       Text(data['user_answer']as String,
-                      style: GoogleFonts.lato(fontSize: 35, color:const Color.fromARGB(255, 230, 230, 4),
+                      style: GoogleFonts.lato(fontSize: 14, color:const Color.fromARGB(255, 230, 230, 4),
                       ),
                       ),
                       // textAlign: TextAlign.left,),
                       Text(data['correct_answer'] as String, 
-                      style: GoogleFonts.amita(fontSize: 35, color: const Color.fromARGB(255, 154, 205, 228)),)
+                      style: GoogleFonts.amita(fontSize: 14, color: const Color.fromARGB(255, 154, 205, 228)),)
                     ],),
                   ),
                   const SizedBox(height: 20,),

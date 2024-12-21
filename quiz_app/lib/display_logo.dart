@@ -11,29 +11,29 @@ class DisplayLogo extends StatelessWidget{
         Image.asset(
           'assets/images/quiz-logo.png'
         ),
-        const SizedBox(height: 40
+        const SizedBox(height: 13
         ),
         const Text(
           "Learn Flutter the fun way!",
           style: TextStyle(
-            fontSize: 42,
+            fontSize: 18,
             color: Colors.white
           ),
         ),
-        const SizedBox(height: 30,
+        const SizedBox(height: 10,
         ),
         TextButton(
           onPressed: (){}, 
           style: TextButton.styleFrom(
             foregroundColor: Colors.white,
-            padding: const EdgeInsets.all(30
+            padding: const EdgeInsets.all(8
             ),
             side: const BorderSide(
               color: Colors.orange,
               width: 10,
             ),
             textStyle: const TextStyle(
-              fontSize: 50
+              fontSize: 20
             )
           ),
           child: const Text("Start quiz"

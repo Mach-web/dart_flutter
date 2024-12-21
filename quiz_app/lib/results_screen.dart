@@ -36,35 +36,37 @@ class ResultsScreen extends StatelessWidget{
       width: double.infinity,
       child: Container(
         margin: const EdgeInsets.all(20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("You passed $numCorrectAnswers of $numTotalQuestions questions",
-            style: GoogleFonts.lato(
-              fontSize: 40,
-              fontWeight: FontWeight.bold,
-              color: const Color.fromARGB(255, 219, 200, 154),
-            ),
-            ),
-            const SizedBox(height: 30,
-            ),
-            QuestionsSummary(
-              summaryData: summaryData,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("You passed $numCorrectAnswers of $numTotalQuestions questions",
+              style: GoogleFonts.lato(
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+                color: const Color.fromARGB(255, 219, 200, 154),
               ),
-            const SizedBox(height: 30,
-            ),
-            TextButton.icon(onPressed: onRestart,
-            style: TextButton.styleFrom(
-              foregroundColor: const Color.fromARGB(255, 219, 200, 154),
-            ),
-            icon: const Icon(Icons.restart_alt, 
-            size: 38,
-            ),
-             label: const Text("Retake Quiz",
-             style: TextStyle(fontSize: 36),
-             ),
-             ),
-          ],
+              ),
+              const SizedBox(height: 30,
+              ),
+              QuestionsSummary(
+                summaryData: summaryData,
+                ),
+              const SizedBox(height: 30,
+              ),
+              TextButton.icon(onPressed: onRestart,
+              style: TextButton.styleFrom(
+                foregroundColor: const Color.fromARGB(255, 219, 200, 154),
+              ),
+              icon: const Icon(Icons.restart_alt, 
+              size: 38,
+              ),
+               label: const Text("Retake Quiz",
+               style: TextStyle(fontSize: 16),
+               ),
+               ),
+            ],
+          ),
         ),
       ),
     );
