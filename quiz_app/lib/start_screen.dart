@@ -21,7 +21,7 @@ class StartScreen extends StatelessWidget{
           //   ),
           // ),
           const SizedBox(height: 10),
-          const Text("Get started",
+          const Text("Test your knowledge on the future",
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,

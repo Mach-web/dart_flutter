@@ -57,56 +57,58 @@ import 'package:quiz_app/models/quiz_questions.dart';
 
 const questions = [
   QuizQuestions(
-    'What is the primary goal of advocating for children’s rights?',
+    'What is a key priority for ensuring the well-being of children and youth 20 years from now?',
     [
-      'To ensure every child has access to education, health, and protection',
-      'To promote awareness of child labor laws',
-      'To empower children to advocate for themselves',
-      'To reduce child poverty',
+      'Providing equitable access to quality education and healthcare',
+      'Focusing solely on technological advancements',
+      'Reducing the global population',
+      'Increasing urbanization at the expense of rural development',
     ],
   ),
   QuizQuestions(
-    'How can young people contribute to shaping the future of education?',
+    'How can education systems in your country be transformed for future sustainability?',
     [
-      'By participating in youth-led advocacy and research initiatives',
-      'By becoming teachers and school administrators',
-      'By writing policy for educational institutions',
-      'By only attending educational conferences',
-  ]),
-  QuizQuestions(
-    'What does "foresight" in the context of education refer to?',
-    [
-      'Anticipating and preparing for future challenges and opportunities in education',
-      'Looking at past educational models',
-      'Using technology to replace teachers',
-      'Focusing solely on current educational trends',
+      'By integrating STEAM, critical thinking, and global citizenship education',
+      'By limiting access to higher education opportunities',
+      'By focusing exclusively on traditional teaching methods',
+      'By removing vocational training from schools',
     ],
   ),
   QuizQuestions(
-    'Why is youth engagement important in the context of global education?',
+    'What role can youth play in shaping a future where children thrive?',
     [
-      'Young people bring fresh perspectives and innovative solutions',
-      'Youth should only follow the decisions made by adults',
-      'Young people have little impact on educational change',
-      'Youth engagement is not relevant to global education',
+      'Acting as advocates and leaders in addressing social and environmental challenges',
+      'Following policies created only by adults',
+      'Ignoring global issues and focusing on local communities exclusively',
+      'Waiting for government initiatives to take the lead',
     ],
   ),
   QuizQuestions(
-    'What is a key benefit of using technology in education?',
+    'How can cultural heritage influence the future of education in your country?',
     [
-      'It can make learning more accessible and personalized',
-      'It is a replacement for teachers',
-      'It eliminates the need for classroom environments',
-      'It is only useful in higher education',
+      'By embedding traditional knowledge and values into modern curricula',
+      'By prioritizing global standards over local context',
+      'By avoiding the use of indigenous languages in education',
+      'By removing cultural subjects from the curriculum',
     ],
   ),
   QuizQuestions(
-    'What role does research play in advocating for children’s rights?',
+    'Which innovation could best support children’s learning and development in the next 20 years?',
     [
-      'It provides data and evidence to support advocacy efforts',
-      'It only helps in creating educational content',
-      'It is not relevant to advocacy work',
-      'It can be used to create advertisements for children’s rights organizations',
+      'Accessible and adaptive learning technologies for diverse needs',
+      'Exclusive use of physical textbooks',
+      'Minimizing the use of digital tools in classrooms',
+      'Focusing solely on standardized testing',
+    ],
+  ),
+  QuizQuestions(
+    'What is the most effective way to create a child-friendly environment in 2045?',
+    [
+      'Ensuring safe spaces, inclusive policies, and child participation in decision-making',
+      'Prioritizing adult opinions over children’s voices',
+      'Focusing only on economic development at the expense of children’s welfare',
+      'Minimizing the involvement of youth in community planning',
     ],
   ),
 ];
+
